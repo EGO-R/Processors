@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initialscale=1.0">
     <title>Процессоры</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@700&family=Russo+One&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,10 +19,10 @@
 <header>
 
     <!-- Главный заголовок -->
-    <h1 id="Topic1"><b>Современные процессоры</b></h1>
+    <h1 id="Topic1" ><b>CPU</b></h1>
 
     <nav>
-        <ol type="A" start="1">
+        <ol type="1" start="1">
             <li><a href="#Topic1">Современные процессоры</a></li>
             <li><a href="#Topic2">Что такое процессор?</a></li>
             <li><a href="#Topic3">Ведущие производители</a>
@@ -42,45 +45,56 @@
 
     <article>
 
-        <section>
-            <!-- Краткое описание процессора -->
-            <h2 id="Topic2"><b>Что такое процессор?</b></h2>
-            <p><b>Центральный процессор</b> — <a href="#Topic7">электронный блок</a> либо <a href="#Topic8">интегральная схема</a>,
-                исполняющая <a href="#Topic9">машинные инструкции</a>, главная часть <a href="#Topic10">аппаратного обеспечения</a>
-                компьютера или <a href="#Topic11">программируемого логического контроллера</a>.</p>
-            <img src="Images/Start_processor.jpg" alt="Крутой процессор" width="320" height="120">
+        <section class="WhatIsCPU">
+                <!-- Краткое описание процессора -->
+                <h2 id="Topic2"><b>Что такое процессор?</b></h2>
+                <p><b>Центральный процессор</b> — <a href="#Topic7">электронный блок</a> либо <a href="#Topic8">интегральная схема</a>,
+                    исполняющая <a href="#Topic9">машинные инструкции</a>, главная часть <a href="#Topic10">аппаратного обеспечения</a>
+                    компьютера или <a href="#Topic11">программируемого логического контроллера</a>.</p>
+            
         </section>
 
 
 
 
-        <section>
+        <section class="Developers">
             <!-- Краткая информация о ведущих производителях процессоров -->
+            
             <h2 id="Topic3"><b>Ведущие производители</b></h2>
-            <div>
-                <p>В настоящее время рынок между собой делят Intel и Amd.</p>
 
-                <img src="Images/Multiple_processors.png" usemap="#Intel_Amd">
-                <map name="Intel_Amd">
-                    <area shape="circle" coords="104,284,90" href="https://www.intel.com/content/www/us/en/homepage.html">
-                    <area shape="rect" coords="832,131,1008,213" href="https://www.amd.com/en.html">
-                    <area shape="poly" coords="160,27,427,99,628,307,339,294" href="https://www.amd.com/en.html">
-                </map>
+            <p>В настоящее время рынок между собой делят Intel и Amd.</p>
 
-                <h3 id="Topic4">Intel</h3>
-                <p>Компания основана в 1968 году в Маунтин-Вью, Калифорния
-                    (<a href="https://www.intel.com/content/www/us/en/homepage.html">Сайт производителя</a>). </p>
 
-                <h3 id="Topic5">Amd</h3>
-                <p>Компания основана в 1969 году в Саннивейл, Калифорния
-                    (<a href="https://www.amd.com/en.html">Сайт производителя</a>).</p>
+            <div class="row">
+                <div class="column">
+                    <img src="Images/Intel_VS_Amd.png" usemap="#Intel_Amd">
+                    <map name="Intel_Amd">
+                        <area shape="poly" coords="47,136,266,38,324,127,285,248,312,270,142,366" 
+                        href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank">
+    
+                        <area shape="poly" coords="373,15,582,104,556,336,297,243" 
+                        href="https://www.amd.com/en.html" target="_blank">
+                    </map>
+                </div>
+    
+                <div class="column">
+                    <h3 id="Topic4">Intel</h3>
+                    <p>Компания основана в 1968 году в Маунтин-Вью, Калифорния
+                        (<a href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank">Сайт производителя</a>). </p>
+    
+                    <h3 id="Topic5">Amd</h3>
+                    <p>Компания основана в 1969 году в Саннивейл, Калифорния
+                        (<a href="https://www.amd.com/en.html" target="_blank">Сайт производителя</a>).</p>
+                </div>
             </div>
+
+            
         </section>
 
 
 
 
-        <section>
+        <section class="term">
             <!-- Список описаний терминов -->
             <h2 id="Topic6"><b>Термины</b></h2>
             <dl>
@@ -135,11 +149,12 @@
 
 <footer>
     <address>
+        <!-- Контактная информация -->
         <p><i>Номер телефона:</i> <a href="tel:89258310755">89258310755</a></p>
         <p><i>Адрес электронной почты:</i> <a href="mailto:egor_trusov00@mail.ru">egor_trusov00@mail.ru</a></p>
     </address>
 </footer>
-<!-- Контактная информация -->
+
 
 
 </body>

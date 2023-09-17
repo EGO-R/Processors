@@ -1,3 +1,90 @@
 h1 {
-    color: red;
+    color: rgb(255, 170, 0);
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 350%;
+}
+
+h2 {
+    color: whitesmoke;
+    font-family: 'Open Sans', arial, sans-serif;
+    font-size: 300%;
+}
+
+h3 {
+    color: whitesmoke;
+    font-family: 'Open Sans', arial, sans-serif;
+    font-size: 200%;
+}
+
+p, dl, ol {
+    color: whitesmoke;
+    font-family: 'Open Sans', arial, sans-serif;
+}
+
+:link {
+    color: rgb(0, 174, 255);
+    text-decoration: none;
+}
+
+:visited {
+    color: crimson;
+}
+
+:link:hover, :visited:hover {
+    color: rgb(234, 238, 10);
+}
+
+body {
+    background-color: black;
+}
+
+.WhatIsCPU {
+    padding: 10% 5%;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), 
+    url(Images/Start_processor.jpg);
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.WhatIsCPU p {
+    font-size: 150%;
+    width: 50%;
+}
+
+.WhatIsCPU p b {
+    font-weight: 1000;
+}
+
+.Developers {
+    padding: 10% 5%;
+}
+
+.Developers p {
+    font-size: 150%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 50%;
+}
+
+
+.term {
+    padding: 10%;
+}
+
+.term dt {
+    font-size: 125%;
+    padding: 40px 0px;
+}
+
+.term dd {
+    font-size: 110%;
+    padding: 10px 0px;
 }
