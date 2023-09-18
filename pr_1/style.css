@@ -1,4 +1,5 @@
 h1 {
+    padding: 0% 10%;
     color: rgb(255, 170, 0);
     font-family: 'Advent Pro', sans-serif;
     font-size: 350%;
@@ -16,10 +17,39 @@ h3 {
     font-size: 200%;
 }
 
-p, dl, ol {
+.logo {
+    padding-top: 2%;
+    padding-left: 5%;
+}
+
+p, dl, ul {
     color: whitesmoke;
     font-family: 'Open Sans', arial, sans-serif;
 }
+
+nav {
+    padding: 30px;
+}
+
+.navigate {
+    list-style: none;
+    margin: o;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navigate > li {
+    display: block;
+    width: 150px;
+    height: 50px;
+    padding: 1px;
+    margin: 0px 5px;
+    /*border: 1px solid whitesmoke;*/
+    
+}
+
+
 
 :link {
     color: rgb(0, 174, 255);
@@ -36,6 +66,7 @@ p, dl, ol {
 
 body {
     background-color: black;
+    margin: 0%;
 }
 
 .WhatIsCPU {
@@ -48,7 +79,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.WhatIsCPU p {
+h2 + p {
     font-size: 150%;
     width: 50%;
 }
@@ -87,4 +118,11 @@ body {
 .term dd {
     font-size: 110%;
     padding: 10px 0px;
+}
+
+aside {
+    position: fixed;
+    right: 10px;
+    bottom: 10%;
+
 }
