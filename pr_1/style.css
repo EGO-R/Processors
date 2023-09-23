@@ -52,6 +52,7 @@ nav {
 }
 
 .navigate {
+    font-size: 120%;
     list-style: none;
     padding-left: 0;
     display: flex;
@@ -155,7 +156,7 @@ h2 + p {
 
 aside {
     position: fixed;
-    right: 10px;
-    bottom: 10%;
+    right: 20px;
+    bottom: 20px;
 
 }
