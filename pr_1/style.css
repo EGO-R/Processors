@@ -1,3 +1,22 @@
+:link {
+    color: rgb(0, 174, 255);
+    text-decoration: none;
+}
+
+:visited {
+    color: crimson;
+}
+
+:link:hover, :visited:hover {
+    color: rgb(234, 238, 10);
+}
+
+body {
+    background-color: black;
+    margin: 0%;
+}
+
+
 h1 {
     padding: 0% 10%;
     color: rgb(255, 170, 0);
@@ -18,56 +37,70 @@ h3 {
 }
 
 .logo {
-    padding-top: 2%;
-    padding-left: 5%;
+    padding-top: 2em;
+    padding-left: 2em;
 }
 
-p, dl, ul {
+p, dl, ul, a {
     color: whitesmoke;
     font-family: 'Open Sans', arial, sans-serif;
 }
 
 nav {
     padding: 30px;
+    padding-top: 1em;
 }
 
 .navigate {
     list-style: none;
-    margin: o;
     padding-left: 0;
     display: flex;
+    text-align: center;
     flex-wrap: wrap;
 }
 
 .navigate > li {
-    display: block;
-    width: 150px;
-    height: 50px;
-    padding: 1px;
-    margin: 0px 5px;
-    /*border: 1px solid whitesmoke;*/
+    flex: 30%;
+    margin: auto;
+    flex-basis: 10em;
+    
+    /* background-color: rgba(128, 128, 128, 0.214); */
+    
+    flex-grow: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: 0px solid whitesmoke;
+    border-radius: 10px;
     
 }
 
-
-
-:link {
-    color: rgb(0, 174, 255);
-    text-decoration: none;
+.navigate > li:hover {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) -30%, rgba(128, 128, 128, 0.563), rgba(0, 0, 0, 0) 130%);
+    /* background-color: rgba(128, 128, 128, 0.449); */
 }
 
-:visited {
-    color: crimson;
+.navigate :link, .navigate :visited {
+    color: #ffffff;
 }
 
-:link:hover, :visited:hover {
-    color: rgb(234, 238, 10);
+.navigate a {
+    display: block;
 }
 
-body {
-    background-color: black;
-    margin: 0%;
+.submenu {
+    list-style: none;
+    padding-left: 0;
+    padding-top: 1em;
+    display: none;
 }
+
+.navigate li:hover .submenu{
+    display: block;
+}
+
+
+
+
 
 .WhatIsCPU {
     padding: 10% 5%;
