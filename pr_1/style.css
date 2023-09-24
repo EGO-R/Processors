@@ -23,7 +23,7 @@ body {
     margin: 0;
 }
 
-
+/* нет таких */
 /* h1 {
     padding: 0% 10%;
     color: rgb(255, 170, 0);
@@ -65,6 +65,7 @@ nav {
 }
 
 .navigate {
+    position: relative;
     list-style: none;
     padding-left: 0;
     display: flex;
@@ -119,6 +120,12 @@ nav {
 
 
 .WhatIsCPU {
+
+
+    /* убрать */
+    float: none; 
+
+
     display: block;
     position: relative;
     padding: 10% 5%;
@@ -161,15 +168,24 @@ nav {
 }
 
 
-.row {
+/* .row {
     display: flex;
     flex-wrap: wrap;
 }
 
 .column {
     flex: 50%;
+} */
+
+/* вернуть */
+.row {
+    position: relative;
+    display: block;
 }
 
+.pic {
+    float: left;
+}
 
 
 
@@ -177,6 +193,11 @@ nav {
 
 .term {
     padding: 10% 5%;
+}
+
+.term h2 {
+    padding-top: 10%;
+    margin-top: -10%;
 }
 
 .term dt {
@@ -197,4 +218,8 @@ aside {
     right: 20px;
     bottom: 20px;
 
+}
+
+footer {
+    font-size: 0.6rem;
 }
