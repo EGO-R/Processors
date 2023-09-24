@@ -1,3 +1,11 @@
+html {
+    margin: 0;
+    color: whitesmoke;
+    font-family: 'Open Sans', arial, sans-serif;
+    background-color: black;
+    font-size: 150%;
+}
+
 :link {
     color: rgb(0, 174, 255);
     text-decoration: none;
@@ -12,47 +20,51 @@
 }
 
 body {
-    background-color: black;
-    margin: 0%;
+    margin: 0;
 }
 
 
-h1 {
+/* h1 {
     padding: 0% 10%;
     color: rgb(255, 170, 0);
     font-family: 'Advent Pro', sans-serif;
     font-size: 350%;
-}
+} */
 
 h2 {
-    color: whitesmoke;
-    font-family: 'Open Sans', arial, sans-serif;
-    font-size: 300%;
+    font-size: 2rem;
 }
 
 h3 {
-    color: whitesmoke;
-    font-family: 'Open Sans', arial, sans-serif;
-    font-size: 200%;
+    font-size: 1.3rem;
 }
+
+p b {
+    font-weight: 1000;
+}
+
+
+
+
 
 .logo {
-    padding-top: 2em;
-    padding-left: 2em;
+    z-index: 100;
+    position: sticky;
+    top: 0;
+    padding-right: 100%;
+    background-color: rgb(0, 0, 0);
+    padding-top: 2px;
+    padding-left: 2px;
 }
 
-p, dl, ul, a {
-    color: whitesmoke;
-    font-family: 'Open Sans', arial, sans-serif;
-}
+
+
 
 nav {
-    padding: 30px;
-    padding-top: 1em;
+    padding: 0 30px;
 }
 
 .navigate {
-    font-size: 120%;
     list-style: none;
     padding-left: 0;
     display: flex;
@@ -61,41 +73,44 @@ nav {
 }
 
 .navigate > li {
-    flex: 30%;
+    position: relative;
     margin: auto;
     flex-basis: 10em;
-    
-    /* background-color: rgba(128, 128, 128, 0.214); */
-    
     flex-grow: 0;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    border: 0px solid whitesmoke;
     border-radius: 10px;
-    
 }
 
 .navigate > li:hover {
     background: linear-gradient(to right, rgba(0, 0, 0, 0) -30%, rgba(128, 128, 128, 0.563), rgba(0, 0, 0, 0) 130%);
-    /* background-color: rgba(128, 128, 128, 0.449); */
 }
 
 .navigate :link, .navigate :visited {
-    color: #ffffff;
-}
-
-.navigate a {
-    display: block;
+    color: whitesmoke;
 }
 
 .submenu {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+    border-radius: inherit;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.668));
+    
+
     list-style: none;
     padding-left: 0;
-    padding-top: 1em;
+    padding-top: 20px;
     display: none;
 }
 
-.navigate li:hover .submenu{
+.submenu > li:hover {
+    text-decoration: underline;
+}
+
+.navigate li:hover .submenu, .navigate a{
     display: block;
 }
 
@@ -104,6 +119,8 @@ nav {
 
 
 .WhatIsCPU {
+    display: block;
+    position: relative;
     padding: 10% 5%;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), 
     url(Images/Start_processor.jpg);
@@ -113,22 +130,36 @@ nav {
     background-repeat: no-repeat;
 }
 
-h2 + p {
-    font-size: 150%;
+.WhatIsCPU h2 {
+    padding-top: 10%;
+    margin-top: -10%;
+}
+
+.WhatIsCPU p {
+    font-size: 1.1rem;
     width: 50%;
 }
 
-.WhatIsCPU p b {
-    font-weight: 1000;
-}
+
+
+
+
+
 
 .Developers {
     padding: 10% 5%;
 }
 
-.Developers p {
-    font-size: 150%;
+.Developers h2 {
+    padding-top: 15%;
+    margin-top: -5%;
 }
+
+.Developers h3 {
+    padding-top: 10%;
+    margin-top: -10%;
+}
+
 
 .row {
     display: flex;
@@ -140,19 +171,26 @@ h2 + p {
 }
 
 
+
+
+
+
 .term {
-    padding: 10%;
+    padding: 10% 5%;
 }
 
 .term dt {
-    font-size: 125%;
     padding: 40px 0px;
 }
 
 .term dd {
-    font-size: 110%;
+    font-size: 0.8rem;
     padding: 10px 0px;
 }
+
+
+
+
 
 aside {
     position: fixed;
