@@ -138,8 +138,8 @@ nav {
 }
 
 .WhatIsCPU h2 {
-    padding-top: 10%;
-    margin-top: -10%;
+    padding-top: 4rem;
+    margin-top: -4rem;
 }
 
 .WhatIsCPU p {
@@ -163,8 +163,8 @@ nav {
 }
 
 .Developers h3 {
-    padding-top: 10%;
-    margin-top: -10%;
+    padding-top: 4rem;
+    margin-top: -4rem;
 }
 
 
@@ -196,8 +196,8 @@ nav {
 }
 
 .term h2 {
-    padding-top: 10%;
-    margin-top: -10%;
+    padding-top: 15%;
+    margin-top: -5%;
 }
 
 .term dt {
