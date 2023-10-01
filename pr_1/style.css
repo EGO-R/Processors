@@ -26,8 +26,6 @@ body {
 /* нет таких */
 /* h1 {
     padding: 0% 10%;
-    color: rgb(255, 170, 0);
-    font-family: 'Advent Pro', sans-serif;
     font-size: 350%;
 } */
 
@@ -47,17 +45,127 @@ p b {
 
 
 
-.logo {
+
+
+
+
+
+
+
+
+
+
+
+
+.banner {
     z-index: 100;
-    display: block;
-    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 200px auto 100px;
+    grid-template-rows: auto;
+    column-gap: 1rem;
+    align-items: center;
+    justify-items: center;
+
+
     position: sticky;
+    width: 100%;
     top: 0;
-    padding-right: 100%;
+    /* padding-right: 100%; */
     background-color: rgb(0, 0, 0);
-    padding-top: 2px;
-    padding-left: 2px;
 }
+
+.logo {
+    position: relative;
+    display: block;
+    grid-column: 1 / 2;
+    
+}
+
+.login {
+    position: relative;
+    display: block;
+    grid-column: 3 / 4;
+    
+}
+
+.forms {
+    overflow: auto;
+    height: auto;
+    max-height: 1000%;
+    position: absolute;
+    display: none;
+    right: 0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 700%;
+    background-color: rgb(44, 44, 44);
+}
+
+#logging_in, #sign_in, #register {
+    display: none;
+}
+
+#logging_in:checked ~ .forms {
+    display: block;
+    position: absolute;
+    
+}
+
+[for="sign_in"]:hover,  [for="register"]:hover, #sign_in:checked + label, #register:checked + label {
+    text-decoration: underline;
+}
+
+.sign_in_form, .register_form {
+    display: none;
+}
+
+#sign_in:checked ~ .sign_in_form,  #register:checked ~ .register_form{
+    display: block;
+}
+
+[for="agreed"] {
+    font-size: 0.8rem;
+}
+
+input:valid {
+    background-color: rgb(111, 225, 111);
+}
+
+input:invalid {
+    background-color: rgb(228, 54, 54);
+}
+
+input:focus {
+    background-color: white;
+}
+
+input {
+    border-radius: 10px;
+}
+
+::placeholder, input[type="datetime-local" i], textarea {
+    color: black;
+    font-family: inherit;
+}
+
+#pic {
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -121,13 +229,24 @@ nav {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .WhatIsCPU {
-
-
-    /* убрать */
-    float: none; 
-
-
     display: block;
     position: relative;
     padding: 10% 5%;
@@ -155,6 +274,18 @@ nav {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 .Developers {
     padding: 10% 5%;
 }
@@ -170,30 +301,33 @@ nav {
 }
 
 
-/* .row {
+.row {
     display: flex;
     flex-wrap: wrap;
 }
 
 .column {
     flex: 50%;
-} */
-
-/* вернуть */
-.row {
-    position: relative;
-    display: block;
-}
-
-.pic {
-    float: left;
 }
 
 
 
 
 
-.term {
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .term {
     padding: 10% 5%;
 }
 
@@ -209,7 +343,22 @@ nav {
 .term dd {
     font-size: 0.8rem;
     padding: 10px 0px;
+} */
+
+.how_it_works {
+    padding: 10% 5%;
 }
+
+.how_it_works > iframe {
+    padding-top: 50px;
+    
+}
+
+
+
+
+
+
 
 
 
@@ -222,6 +371,31 @@ aside {
 
 }
 
+
+
+
+
+
+
+
+
 footer {
+    display: grid;
+    padding-left: 10px;
+    padding-top: 10%;
+    grid-template-columns: 200px auto 250px;
+    grid-template-rows: auto;
+    column-gap: 1rem;
     font-size: 0.6rem;
+}
+
+footer > iframe {
+    grid-column: 3 / 4;
+    align-self: center;
+    justify-self: center;
+}
+
+footer > address {
+    grid-column: 1 / 2;
+    align-self: center;
 }

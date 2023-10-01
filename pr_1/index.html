@@ -14,9 +14,157 @@
 
 
 
+
+
+
+
+
+
+
+
 <body>
-    <!-- Главный заголовок -->
-    <img src="Images/logo.png" class="logo">
+    <div class="banner">
+        <!-- Главный заголовок -->
+        <img src="Images/logo.png" class="logo" width="140px" height="78px">
+
+
+
+
+
+
+
+        <div class="login">
+            <input type="checkbox" name="logging_in" id="logging_in" required>
+            <label for="logging_in"><img src="Images\login_img.png" width="50px" class="login_img"></label>
+            
+
+            <div class="forms">
+
+                <input type="radio" id="sign_in" name="login_button" checked>
+                <label for="sign_in">Вход</label>
+
+                <input type="radio" id="register" name="login_button">
+                <label for="register">Регистрация</label>
+
+                
+
+
+
+
+
+                <form action="" method="post" class="sign_in_form">
+                    <p>
+                        <label for="mail_login">Введите почту: </label><br>
+                        <input type="email" name="mail_login" id="mail_login" required>
+                    </p>
+    
+                    <p>
+                        <label for="password_login">Введите пароль: </label><br>
+                        <input type="password" name="password_login" id="password_login" required>
+                    </p>
+
+                    <button type="submit">Войти</button>
+                </form>
+
+                
+
+
+
+
+
+
+
+                <form action="" method="post" class="register_form">
+                    <p>
+                        <label for="pic">Выберите файл: </label><br>
+                        <input type="file" name="pic" id="pic" accept="image/gif, image/png, image/jpg, image/jpeg">
+                    </p>
+
+                    <p>
+                        <label for="name">Введите имя аккаунта: </label><br>
+                        <input type="text" name="name" id="name" required>
+                    </p>
+
+                    <p>
+                        <label for="about">Расскажите о себе: </label><br>
+                        <textarea name="about" id="about"></textarea>
+                    </p>
+
+                    <fieldset>
+                        <legend>Выберите Ваш пол:</legend>
+                        
+                        <label>
+                            <input type="radio" name="sex" value="male">
+                            М
+                        </label>
+
+                        <label>
+                            <input type="radio" name="sex" value="female">
+                            Ж
+                        </label>
+                    </fieldset>
+
+                    <p>
+                        <label for="city">Ваш город</label>
+                        <select name="city" id="city" multiple size="2">
+                            <option value="" selected>-- Выберите город --</option>
+                            <option value="Moscow">Москва</option>
+                            <option value="Not Moscow">Не Москва</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="mail_register">Введите почту: </label><br>
+                        <input type="email" name="mail_register" id="mail_register" placeholder="qwerty@mail.ru">
+                    </p>
+
+                    <p>
+                        <label for="telephone">Введите номер телефона: </label><br>
+                        <input type="tel" name="telephone" id="telephone" required pattern="^[0-9]+$">
+                    </p>
+                    
+                    <p>
+                        <label for="password_register1">Введите пароль: </label><br>
+                        <input type="password" name="password_register1" id="password_register1" required>
+                    </p>
+
+                    <p>
+                        <label for="password_register2">Повторите пароль: </label><br>
+                        <input type="password" name="password_register2" id="password_register2" required>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" name="agreed" id="agreed" required>
+                        <label for="agreed">Я согласен с условиями</label>
+                    </p>
+
+                    <p>
+                        <label for="date">Введите дату: </label><br>
+                        <input type="datetime-local" name="date" id="date" required min="2000-01-01T00:00" max="2023-10-01T00:00">
+                    </p>
+
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+
+            
+        </div>
+        
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <header>
     
@@ -29,11 +177,20 @@
                     <li><a href="#Topic5">Amd</a></li>
                 </ul>
             </li>
-            <li><a href="#Topic6">Термины</a></li>
+            <li><a href="#Topic6">Как процессор устроен</a></li>
         </ol>
     </nav>
 
 </header>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -56,6 +213,14 @@
 
 
 
+
+
+
+
+
+
+
+
         <section class="Developers">
             <!-- Краткая информация о ведущих производителях процессоров -->
             
@@ -64,9 +229,8 @@
             <p>В настоящее время рынок между собой делят Intel и Amd.</p>
 
 
-            <!-- вернуть -->
-            <!-- <div class="row"> -->
-                <div class="pic">
+            <div class="row">
+                <div class="column">
                     <img src="Images/Intel_VS_Amd.png" usemap="#Intel_Amd">
                     <map name="Intel_Amd">
                         <area shape="poly" coords="47,136,266,38,324,127,285,248,312,270,142,366" 
@@ -86,7 +250,7 @@
                     <p>Компания основана в 1969 году в Саннивейл, Калифорния
                         (<a href="https://www.amd.com/en.html" target="_blank">Сайт производителя</a>).</p>
                 </div>
-            <!-- </div> -->
+            </div>
 
             
         </section>
@@ -94,8 +258,18 @@
 
 
 
-        <section class="term">
-            <!-- Список описаний терминов -->
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <section class="term">
             <h2 id="Topic6"><b>Термины</b></h2>
             <dl>
                 <dt id="Topic7"><b>Электронный блок</b></dt>
@@ -130,13 +304,40 @@
                     машин или процессов.</dd>
                 <dd>Устройства, предназначенные для работы в системах реального времени.</dd>
             </dl>
+        </section> -->
+
+
+
+
+
+
+
+
+
+
+
+        <section class="how_it_works">
+            <h2 id="Topic6"><b>Как процессор устроен</b></h2>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/qIhZrMg3_Tk?si=IIBI4sfC_hNIEcQ3" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+            picture-in-picture; web-share" allowfullscreen></iframe>
+            
         </section>
 
     </article>
 
 
+
+
+
+
+
+
+
     <aside>
-        <a href="#"><img src="Images/up_button.png" title="Вверх" width="40"></a>
+        <a href="#"><img src="Images/up_button.png" title="Вверх" width="40px"></a>
     </aside>
 
 
@@ -148,12 +349,22 @@
 
 
 
+
+
+
+
+
+
+
 <footer>
     <address>
         <!-- Контактная информация -->
         <p><i>Номер телефона:</i> <a href="tel:89258310755">89258310755</a></p>
         <p><i>Адрес электронной почты:</i> <a href="mailto:egor_trusov00@mail.ru">egor_trusov00@mail.ru</a></p>
     </address>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d143794.0845164808!2d37.44506491178338!3d55.72753070159747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54dc1d23b51c3%3A0x74763ed59c81ccb6!2z0KDQotCjINCc0JjQoNCt0JA!5e0!3m2!1sru!2sru!4v1696182710314!5m2!1sru!2sru" 
+     title="Карта" width="200" height="200"></iframe>
 </footer>
 
 
