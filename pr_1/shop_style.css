@@ -1,0 +1,43 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5rem 2rem;
+    gap: 10px;
+}
+
+
+
+.products > .cpu {
+    width: 200px;
+    height: 300px;
+    
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(245, 222, 179, 0);
+    border-radius: 10px;
+    background-color: rgb(36, 36, 36);
+
+    display: grid;
+    grid-template-rows: 200px 100px;
+    grid-template-columns: auto;
+
+    justify-items: center;
+    align-items: center;
+    
+}
+
+.products > .cpu:hover {
+    border-color: rgb(204, 52, 241);
+}
+
+.cpu p{
+    margin: 0;
+    width: auto;
+    position: relative;
+    display: block;
+    border-top: 1px solid black;
+    align-self: flex-start;
+    justify-self: center;
+}
+
