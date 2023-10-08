@@ -349,6 +349,11 @@ nav {
     padding: 10% 5%;
 }
 
+.how_it_works h2 {
+    padding-top: 15%;
+    margin-top: -5%;
+}
+
 .how_it_works > iframe {
     padding-top: 50px;
     
