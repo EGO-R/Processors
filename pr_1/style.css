@@ -60,7 +60,7 @@ p b {
 .banner {
     z-index: 100;
     display: grid;
-    grid-template-columns: 200px auto 100px 100px;
+    grid-template-columns: 200px auto 100px;
     grid-template-rows: auto;
     column-gap: 1rem;
     align-items: center;
@@ -84,7 +84,7 @@ p b {
 .login {
     position: relative;
     display: block;
-    grid-column: 4 / 5;
+    grid-column: 3 / 4;
     
 }
 
@@ -178,19 +178,26 @@ nav {
     position: relative;
     list-style: none;
     padding-left: 0;
+    margin: 5px;
     display: flex;
     text-align: center;
     flex-wrap: wrap;
 }
 
 .navigate > li {
+    display: block;
+    /* height: 100%; */
     position: relative;
     margin: auto;
-    flex-basis: 10em;
+    flex-basis: 7em;
     flex-grow: 0;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     border-radius: 10px;
+}
+
+.navigate > li > a {
+    height: 100%;
 }
 
 .navigate > li:hover {
@@ -227,47 +234,78 @@ nav {
 
 
 .menu {
-    grid-column: 3 / 4;
+    grid-column: 2 / 3;
+}
+
+[name="hide_menu"], [for="hide_menu"] {
     display: none;
 }
 
 
-@media screen and (max-width: 1215px) {
-    [name="hide_menu"] {
-        display: none;
-    }
-    .navigate {
-        display: none;
-        position: fixed;
-    }
-
-    .menu {
-        height: 71px;
+@media screen and (max-width: 1100px) {
+    [for="hide_menu"] {
+        height: 41px;
         width: 60px;
         display: block;
     }
 
-    .menu div {
+    .menu {
+        justify-self: end;
+    }
+
+    .navigate {
+        flex-direction: column;
+        
+        visibility: hidden;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        width: 100vw;
+        height: calc(100vh - 78px);
+        background-color: rgba(0, 0, 0, 0.856);
+    }
+
+    .navigate > li {
+        flex-basis: auto;
+    }
+
+    #hide_menu:checked ~ .navigate {
+        visibility: visible;
+    }
+
+    [for="hide_menu"] > div {
+        position: absolute;
         align-self: center;
         justify-self: center;
         background-color: wheat;
         width: 60px;
         height: 7px;
-        margin: 10px 0;
         border-radius: 5px;
         transition: all 0.3s ease-in-out;
     }
 
-    menu:checked .fstripe {
-        transform: rotate(45deg);
+    [for="hide_menu"] > .sstripe {
+        margin-top: 17px;
     }
 
-    menu:checked .sstripe {
+    [for="hide_menu"] > .tstripe {
+        margin-top: 34px;
+    }
+
+
+    #hide_menu:checked + [for="hide_menu"] > .fstripe {
+        transform: translateY(17px) rotate(-45deg);
+        background-color: red;
+    }
+
+    #hide_menu:checked + [for="hide_menu"] > .sstripe {
         display: none;
     }
 
-    menu:checked .tstripe {
-        transform: rotate(-45deg);
+    #hide_menu:checked + [for="hide_menu"] > .tstripe {
+        transform: translateY(-17px) rotate(45deg);
+        background-color: red;
     }
 
 

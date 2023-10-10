@@ -48,7 +48,20 @@ h2 {
 
 @media print {
     html {
-        background-color: white;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .banner {
+        position: relative;
+        background-color: rgb(255, 255, 255);
+    }
+
+    h2 {
+        color: black;
+    }
+
+    .products > .cpu {
+        background-color: rgb(124, 124, 124);
     }
 }
 
