@@ -1,3 +1,7 @@
+h2 {
+    margin-left: 30px;
+}
+
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -39,5 +43,12 @@
     border-top: 1px solid black;
     align-self: flex-start;
     justify-self: center;
+}
+
+
+@media print {
+    html {
+        background-color: white;
+    }
 }
 

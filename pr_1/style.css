@@ -60,7 +60,7 @@ p b {
 .banner {
     z-index: 100;
     display: grid;
-    grid-template-columns: 200px auto 100px;
+    grid-template-columns: 200px auto 100px 100px;
     grid-template-rows: auto;
     column-gap: 1rem;
     align-items: center;
@@ -84,7 +84,7 @@ p b {
 .login {
     position: relative;
     display: block;
-    grid-column: 3 / 4;
+    grid-column: 4 / 5;
     
 }
 
@@ -226,6 +226,52 @@ nav {
 }
 
 
+.menu {
+    grid-column: 3 / 4;
+    display: none;
+}
+
+
+@media screen and (max-width: 1215px) {
+    [name="hide_menu"] {
+        display: none;
+    }
+    .navigate {
+        display: none;
+        position: fixed;
+    }
+
+    .menu {
+        height: 71px;
+        width: 60px;
+        display: block;
+    }
+
+    .menu div {
+        align-self: center;
+        justify-self: center;
+        background-color: wheat;
+        width: 60px;
+        height: 7px;
+        margin: 10px 0;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    menu:checked .fstripe {
+        transform: rotate(45deg);
+    }
+
+    menu:checked .sstripe {
+        display: none;
+    }
+
+    menu:checked .tstripe {
+        transform: rotate(-45deg);
+    }
+
+
+}
 
 
 
