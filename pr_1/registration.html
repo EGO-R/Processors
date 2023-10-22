@@ -1,0 +1,75 @@
+<input type="radio" id="register" name="login_button">
+<label for="register">Регистрация</label>
+
+
+<form action="" method="post" class="register_form">
+    <p>
+        <label for="pic">Выберите файл: </label><br>
+        <input type="file" name="pic" id="pic" accept="image/gif, image/png, image/jpg, image/jpeg">
+    </p>
+
+    <p>
+        <label for="name">Введите имя аккаунта: </label><br>
+        <input type="text" name="name" id="name" required>
+    </p>
+
+    <p>
+        <label for="about">Расскажите о себе: </label><br>
+        <textarea name="about" id="about"></textarea>
+    </p>
+
+    <fieldset>
+        <legend>Выберите Ваш пол:</legend>
+        
+        <label>
+            <input type="radio" name="sex" value="male">
+            М
+        </label>
+
+        <label>
+            <input type="radio" name="sex" value="female">
+            Ж
+        </label>
+    </fieldset>
+
+    <p>
+        <label for="city">Ваш город</label>
+        <select name="city" id="city" multiple size="2">
+            <option value="" selected>-- Выберите город --</option>
+            <option value="Moscow">Москва</option>
+            <option value="Not Moscow">Не Москва</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="mail_register">Введите почту: </label><br>
+        <input type="email" name="mail_register" id="mail_register" placeholder="qwerty@mail.ru">
+    </p>
+
+    <p>
+        <label for="telephone">Введите номер телефона: </label><br>
+        <input type="tel" name="telephone" id="telephone" required pattern="^[0-9]+$">
+    </p>
+    
+    <p>
+        <label for="password_register1">Введите пароль: </label><br>
+        <input type="password" name="password_register1" id="password_register1" required>
+    </p>
+
+    <p>
+        <label for="password_register2">Повторите пароль: </label><br>
+        <input type="password" name="password_register2" id="password_register2" required>
+    </p>
+
+    <p>
+        <input type="checkbox" name="agreed" id="agreed" required>
+        <label for="agreed">Я согласен с условиями</label>
+    </p>
+
+    <p>
+        <label for="date">Введите дату: </label><br>
+        <input type="datetime-local" name="date" id="date" required min="2000-01-01T00:00" max="2023-10-01T00:00">
+    </p>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>

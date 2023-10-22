@@ -2,7 +2,126 @@ h2 {
     margin-left: 30px;
 }
 
-.products {
+#amd_button, #intel_button, #all_button {
+    display: none;
+}
+
+
+/* 1 ряд */
+@media all {
+    .first-square, .second-square {
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        backdrop-filter: blur(10px);
+        background-color: rgba(52, 52, 53, 0.612);
+        border-radius: 10px;
+        visibility: hidden;
+    }
+    
+    .first-square {
+        top: -160px;
+    }
+    
+    .second-square {
+        right: 0;
+        bottom: -160px;
+    }
+    
+    .product_card:hover .first-square {
+        animation: 0.5s first_square ease-out forwards;
+    }
+    
+    .product_card:hover .second-square {
+        animation: 0.5s second_square ease-out forwards;
+    }
+    
+    @keyframes first_square {
+        from {
+            visibility: visible;
+            transform: translateY(0);
+        }
+        to {
+            visibility: visible;
+            transform: translateY(100px);
+        }
+    }
+    
+    @keyframes second_square {
+        from {
+            visibility: visible;
+            transform: translateY(0);
+        }
+        to {
+            visibility: visible;
+            transform: translateY(-100px);
+        }
+    }
+    
+    .product_cards {
+        margin-top: 200px;
+        margin-bottom: 200px;
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        justify-items: center;
+        align-items: center;
+        flex-grow: 0;
+    }
+    
+    .product_card {
+        position: relative;
+        z-index: 1;
+    
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -50px;
+            left: 50px;
+            width: 100px;
+            height: 300px;
+            transform: skew(20deg);
+            background: linear-gradient(-60deg, rgb(0, 136, 255), rgb(255, 71, 230));
+            z-index: -1;
+    
+            box-shadow: 0 0 5px rgb(0, 255, 234), 0 0 25px rgb(0, 255, 234), 0 0 50px rgb(0, 255, 234);
+        }
+        
+    }
+    
+    label {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .product_card > div {
+        position: relative;
+        display: flex;
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+        justify-items: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        background-color: rgba(52, 52, 53, 0.612);
+    }
+    
+    .product_card:hover::before {
+        animation: 0.5s product_card_hover ease-out forwards;
+    }
+    
+    @keyframes product_card_hover {
+        to {
+            transform: skew(0deg);
+        }
+    }
+}
+
+
+
+.all_products {
     display: flex;
     flex-wrap: wrap;
     margin: 3rem 2rem;
@@ -47,7 +166,6 @@ h2 {
         position: absolute;
         width: inherit;
         height: inherit;
-        bottom: calc(inherit - 300px);
         border-radius: 10px;
         background: linear-gradient( to top, rgb(69, 254, 78), rgba(217, 210, 210, 0));
         animation: 0.5s select_background ease-out forwards;

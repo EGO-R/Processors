@@ -43,6 +43,7 @@ p b {
 
 
 
+
 /* баннер */
 @media all {
     .banner {
@@ -308,69 +309,117 @@ p b {
 
 /* формы */
 @media all {
-    .forms {
-        overflow: auto;
-        height: auto;
-        max-height: 1000%;
-        position: absolute;
+    #logging_in {
         display: none;
-        right: 0;
-        padding: 10px;
-        border-radius: 5px;
-        width: 700%;
-        background-color: rgb(44, 44, 44);
+    }
+
+
+    .forms {
+        display: none;
+        position: fixed;
+        width: 50vw;
+        height: 50vh;
+        right: 25vw;
+        top: 25vh;
+        padding: 0 20px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        background-color: rgba(45, 45, 45, 0.762);
     }
     
-    #logging_in, #sign_in, #register {
-        display: none;
-    }
+    
     
     #logging_in:checked ~ .forms {
         display: block;
-        position: absolute;
-        
     }
-    
-    [for="sign_in"]:hover,  [for="register"]:hover, #sign_in:checked + label, #register:checked + label {
-        text-decoration: underline;
-    }
-    
-    .sign_in_form, .register_form {
-        display: none;
-    }
-    
-    #sign_in:checked ~ .sign_in_form,  #register:checked ~ .register_form{
+
+    .forms h2 {
         display: block;
     }
-    
-    [for="agreed"] {
-        font-size: 0.8rem;
+
+    .forms input {
+        height: 30px;
+    }
+
+    .sign_in_form {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 0;
+        flex-shrink: 0;
+        row-gap: 50px;
+    }
+
+    #logging_in:checked ~ .forms .sign_in_form {
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100px;
+            height: 100px;
+            backdrop-filter: blur(10px);
+            background-color: rgba(45, 45, 45, 0.89);
+            border-radius: 5px;
+            animation: 0.5s before-random ease-out forwards;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100px;
+            height: 100px;
+            backdrop-filter: blur(10px);
+            background-color: rgba(45, 45, 45, 0.762);
+            border-radius: 5px;
+            animation: 0.5s after-random ease-out forwards;
+        }
+    }
+
+
+    @keyframes before-random {
+        from {
+            transform: translate(-23vw, calc(100% / 2));
+        }
+        to {
+            transform: translate(-10vw, calc(100% / 2));
+        }
+    }
+
+    @keyframes after-random {
+        from {
+            transform: translate(70vw, -10vh);
+        }
+        to {
+            transform: translate(60vw, -10vh);
+        }
     }
     
-    input:valid {
-        background-color: rgb(111, 225, 111);
-    }
     
-    input:invalid {
-        background-color: rgb(228, 54, 54);
-    }
     
-    input:focus {
-        background-color: white;
-    }
     
     input {
-        border-radius: 10px;
+        background-color: rgb(122, 122, 122);
+        border-radius: 20px;
     }
     
-    ::placeholder, input[type="datetime-local" i], textarea {
-        color: black;
+
+    
+    ::placeholder, input[type="datetime-local"], textarea {
+        --text_color: rgb(245, 245, 245);
+        color: var(--text_color);
+        font-size: 0.8rem;
         font-family: inherit;
     }
     
-    #pic {
-        color: black;
+    .forms button {
+        width: 200px;
+        height: 50px;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
     }
+
 }
 
 
@@ -593,7 +642,7 @@ p b {
 .video {
     position: relative;
     overflow: hidden;
-    
+    width: 560px;
     
 }
 
@@ -630,6 +679,7 @@ p b {
 
 
 aside {
+    z-index: 10;
     position: fixed;
     right: 20px;
     bottom: 20px;
@@ -661,7 +711,6 @@ aside > a:hover {
 
 
 aside > a > img {
-    
     position: relative;
 }
 
@@ -683,17 +732,67 @@ aside > a:hover > img {
 
 
 footer {
-    display: grid;
+    display: flex;
+    position: relative;
     padding-left: 10px;
     padding-top: 10%;
-    grid-template-columns: 200px auto 250px;
-    grid-template-rows: auto;
     column-gap: 1rem;
     font-size: 0.6rem;
+    justify-content: space-between;
+    flex-grow: 0;
+    column-gap: 10px;
 }
 
 
 footer > address {
-    grid-column: 1 / 2;
+    width: 350px;
     align-self: center;
+    flex-shrink: 0;
 }
+
+.socials {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.yt-button, .vk-button, .tg-button {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    width: 50px;
+    height: 50px;
+    background-color: rgb(48, 48, 48);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.yt-button:hover, .vk-button:hover, .tg-button:hover {
+    &::before {
+        content: '';
+        position: absolute;
+        top: -100%;
+        width: inherit;
+        height: inherit;
+        z-index: -1;
+        background: linear-gradient(-60deg, rgb(255, 204, 0), rgb(255, 0, 136));
+        animation: 0.5s social_animation ease-out forwards;
+    }
+}
+
+@keyframes social_animation {
+    to {
+        transform: translateY(100%);
+    }
+}
+

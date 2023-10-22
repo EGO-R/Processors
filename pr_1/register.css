@@ -1,0 +1,45 @@
+#logging_in:checked ~ .forms {
+    display: block;
+    
+}
+
+[for="sign_in"]:hover,  [for="register"]:hover, #sign_in:checked + label, #register:checked + label {
+    text-decoration: underline;
+}
+
+.sign_in_form, .register_form {
+    display: none;
+}
+
+#sign_in:checked ~ .sign_in_form,  #register:checked ~ .register_form{
+    display: block;
+}
+
+[for="agreed"] {
+    font-size: 0.8rem;
+}
+
+input:valid {
+    background-color: rgb(111, 225, 111);
+}
+
+input:invalid {
+    background-color: rgb(228, 54, 54);
+}
+
+input:focus {
+    background-color: white;
+}
+
+input {
+    border-radius: 10px;
+}
+
+::placeholder, input[type="datetime-local" i], textarea {
+    color: black;
+    font-family: inherit;
+}
+
+#pic {
+    color: black;
+}
