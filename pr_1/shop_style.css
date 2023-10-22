@@ -11,10 +11,11 @@ h2 {
 
 
 
-.products > .cpu {
+.cpu {
     width: 200px;
     height: 300px;
     margin: 0.5rem;
+    position: relative;
     
     flex-grow: 0;
     flex-shrink: 0;
@@ -24,26 +25,60 @@ h2 {
     background-color: rgb(36, 36, 36);
 
     display: grid;
-    grid-template-rows: 200px 100px;
-    grid-template-columns: auto;
+    grid-template-rows: 300px;
+    /* grid-template-rows: 200px 100px;
+    grid-template-columns: auto; */
 
     justify-items: center;
     align-items: center;
+    overflow: hidden;
+    
+    
     
 }
 
-.products > .cpu:hover {
-    border-color: rgb(204, 52, 241);
+.cpu:hover {
+    
+
+    &::before {
+        content: '';
+        display: block;
+        bottom: -100%;
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        bottom: calc(inherit - 300px);
+        border-radius: 10px;
+        background: linear-gradient( to top, rgb(69, 254, 78), rgba(217, 210, 210, 0));
+        animation: 0.5s select_background ease-out forwards;
+        
+        
+    }
 }
 
-.cpu p{
+@keyframes select_background {
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+.cpu div {
     margin: 0;
-    width: auto;
-    position: relative;
+    position: absolute;
     display: block;
-    border-top: 1px solid black;
-    align-self: flex-start;
-    justify-self: center;
+    bottom: 0;
+    opacity: 0;
+}
+
+.cpu:hover div {
+    animation: 0.5s show_description ease-in forwards;
+}
+
+@keyframes show_description {
+    to {
+        opacity: 1;
+        transform: translateY(-100px);
+    }
 }
 
 
@@ -66,3 +101,6 @@ h2 {
     }
 }
 
+.cpu div ~ img {
+    filter: invert(100%);
+}
