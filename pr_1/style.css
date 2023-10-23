@@ -53,6 +53,7 @@ p b {
         grid-template-rows: auto;
         align-items: center;
         justify-items: center;
+        z-index: 100;
     
     
         position: sticky;
@@ -317,14 +318,17 @@ p b {
     .forms {
         display: none;
         position: fixed;
-        width: 50vw;
-        height: 50vh;
-        right: 25vw;
-        top: 25vh;
+        width: 60vh;
+        height: 40vh;
+        left: calc(50vw - 30vh);
+        top: 30vh;
         padding: 0 20px;
         border-radius: 20px;
         backdrop-filter: blur(10px);
         background-color: rgba(45, 45, 45, 0.762);
+        z-index: 1;
+
+        
     }
     
     
@@ -379,19 +383,19 @@ p b {
 
     @keyframes before-random {
         from {
-            transform: translate(-23vw, calc(100% / 2));
+            transform: translate(-23vh, 25vh);
         }
         to {
-            transform: translate(-10vw, calc(100% / 2));
+            transform: translate(-10vh, 25vh);
         }
     }
 
     @keyframes after-random {
         from {
-            transform: translate(70vw, -10vh);
+            transform: translate(60vh, -40vh);
         }
         to {
-            transform: translate(60vw, -10vh);
+            transform: translate(60vh, -20vh);
         }
     }
     
