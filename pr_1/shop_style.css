@@ -140,6 +140,16 @@ h2 {
     }
 
     .product_card2 {
+        position: relative;
+
+        width: 15%;
+        height: 50vh;
+        @media screen and (max-width: 1300px) {
+            width: 200px;
+            height: 300px;
+            
+        }
+
         border-radius: 20px;
         &:nth-child(1):hover {
             background-image: url(Images/amd_logo.png);
@@ -167,8 +177,8 @@ h2 {
     .product_card2 > div {
         position: relative;
         display: flex;
-        width: 200px;
-        height: 300px;
+        width: 100%;
+        height: 100%;
         border-radius: inherit;
         justify-items: center;
         align-items: center;
@@ -200,12 +210,15 @@ h2 {
         position: relative;
         margin-top: 200px;
         margin-bottom: 200px;
+        width: 100%;
+        height: 100%;
         
         justify-content: space-around;
         justify-items: center;
         align-items: center;
         flex-grow: 0;
         flex-wrap: wrap;
+        z-index: 1;
     }
 
 
@@ -218,46 +231,111 @@ h2 {
     .product_card3 > div {
         position: relative;
         display: flex;
-        width: 200px;
-        height: 300px;
+        width: 100%;
+        height: 100%;
         justify-items: center;
         align-items: center;
         border-radius: inherit;
-        background-color: rgb(52, 52, 53);
+        z-index: 10;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            background: linear-gradient(to right, rgb(0, 217, 255), rgb(0, 255, 145));
+
+            
+        }
+        
     }
 
-    .product_card3:hover > div {
-        position: relative;
-        transition: all 0.5s linear;
-        z-index: 1;
-
-        
-
-        
-    }
+    
 
     .product_card3 {
         position: relative;
         border-radius: 10px;
-        background: linear-gradient(to right, rgb(0, 0, 0));
+        width: 15%;
+        height: 50vh;
+
+        @media screen and (max-width: 1300px) {
+            width: 200px;
+            height: 300px;
+            
+        }
+
+        &:hover > div {
+            visibility: hidden;
+
+            &::before {
+                transition: all 0.2s linear;
+                transform: translateX(100%);
+            }
+            
+        }
+
+        &:nth-child(1)::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            border-radius: inherit;
+            background-image: url(Images/amd_beauty.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        &:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            border-radius: inherit;
+            background-image: url(Images/intel_beauty.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        &:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            border-radius: inherit;
+            background-image: url(Images/cpu_beauty.jpg);
+            background-position: center;
+            background-size: cover;
+        }
 
         &:hover {
-            &::before {
-                content: '';
-                position: absolute;
-                display: block;
-                width: calc(100% + 4px);
-                height: calc(100% + 4px);
-                top: -2px;
-                left: -2px;
-                border-radius: inherit;
-                background: conic-gradient(from var(--a),  
-                rgb(217, 0, 255) 0%, transparent 0%, transparent 40%, 
-                rgb(217, 0, 255) 50%, transparent 50%, transparent 85%,
-                rgb(217, 0, 255) 100%);
-                animation: 2s border_point linear infinite;
-                z-index: -1;
-            }
+            transition: all 0.2s linear;
+            transform: scale(1.1);
+        }
+
+        
+
+        &:hover::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 102%;
+            height: 102%;
+            top: -1%;
+            left: -1%;
+            border-radius: inherit;
+            background: conic-gradient(from var(--a),  
+            rgb(217, 0, 255) 0%, transparent 0%, transparent 40%, 
+            rgb(217, 0, 255) 50%, transparent 50%, transparent 90%,
+            rgb(217, 0, 255) 100%);
+            animation: 2s border_point linear infinite;
+            z-index: -1;
         }
         
     }
