@@ -139,6 +139,24 @@ h2 {
         flex-wrap: wrap;
     }
 
+    .product_card2 {
+        border-radius: 20px;
+        &:nth-child(1):hover {
+            background-image: url(Images/amd_logo.png);
+            background-position: center;
+            background-size: cover;
+        }
+        &:nth-child(2):hover {
+            background-image: url(Images/intel_logo.png);
+            background-position: center;
+            background-size: cover;
+        }
+        &:nth-child(3):hover {
+            background-image: url(Images/cpu_logo.png);
+            background-position: center;
+            background-size: cover;
+        }
+    }
 
     .product_card2 label {
         position: relative;
@@ -151,11 +169,13 @@ h2 {
         display: flex;
         width: 200px;
         height: 300px;
-        border-radius: 20px;
+        border-radius: inherit;
         justify-items: center;
         align-items: center;
         backdrop-filter: blur(10px);
         background-color: rgba(52, 52, 53, 0.612);
+
+        
     }
 
     .product_cards2:has(> .product_card2:hover) > .product_card2 {
@@ -165,6 +185,8 @@ h2 {
             filter: blur(0);
             transition: all 0.5s ease-in-out;
             transform: scale(1.1);
+            --color: rgb(0, 200, 255);
+            box-shadow: 5px 5px var(--color), 0 0 25px var(--color), 0 0 125px var(--color);
         }
     }
 
@@ -200,8 +222,8 @@ h2 {
         height: 300px;
         justify-items: center;
         align-items: center;
-        backdrop-filter: blur(10px);
-        background-color: rgba(52, 52, 53, 0.612);
+        border-radius: inherit;
+        background-color: rgb(52, 52, 53);
     }
 
     .product_card3:hover > div {
@@ -209,19 +231,34 @@ h2 {
         transition: all 0.5s linear;
         z-index: 1;
 
-        &::before {
-            content: '';
-            position: absolute;
-            display: block;
-            width: calc(100% + 3px);
-            height: calc(100% + 3px);
-            background: repeating-conic-gradient(from var(--a), rgb(217, 0, 255) 0%, 
-            rgb(217, 0, 255) 5%, transparent 5%, transparent 40%, 
-            rgb(217, 0, 255) 50%);
-            animation: 1s border_point linear infinite;
-            z-index: -1;
-        }
+        
 
+        
+    }
+
+    .product_card3 {
+        position: relative;
+        border-radius: 10px;
+        background: linear-gradient(to right, rgb(0, 0, 0));
+
+        &:hover {
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                top: -2px;
+                left: -2px;
+                border-radius: inherit;
+                background: conic-gradient(from var(--a),  
+                rgb(217, 0, 255) 0%, transparent 0%, transparent 40%, 
+                rgb(217, 0, 255) 50%, transparent 50%, transparent 85%,
+                rgb(217, 0, 255) 100%);
+                animation: 2s border_point linear infinite;
+                z-index: -1;
+            }
+        }
         
     }
 
@@ -237,6 +274,14 @@ h2 {
         }
         100% {
             --a: 360deg;
+        }
+    }
+
+    .product_cards3:has(> .product_card3:hover) > .product_card3 {
+        filter: brightness(50%);
+
+        &:hover {
+            filter: brightness(100%);
         }
     }
 }
