@@ -67,11 +67,14 @@ h2 {
         justify-items: center;
         align-items: center;
         flex-grow: 0;
+        flex-wrap: wrap;
     }
     
     .product_card {
         position: relative;
         z-index: 1;
+        margin-top: 100px;
+        margin-bottom: 100px;
     
         &::before {
             content: '';
@@ -90,7 +93,7 @@ h2 {
         
     }
     
-    label {
+    .product_card label {
         position: relative;
         width: 100%;
         text-align: center;
@@ -120,6 +123,123 @@ h2 {
 }
 
 
+/* 2 ряд */
+@media all {
+    
+    .product_cards2 {
+        display: flex;
+        position: relative;
+        margin-top: 200px;
+        margin-bottom: 200px;
+        
+        justify-content: space-around;
+        justify-items: center;
+        align-items: center;
+        flex-grow: 0;
+        flex-wrap: wrap;
+    }
+
+
+    .product_card2 label {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    .product_card2 > div {
+        position: relative;
+        display: flex;
+        width: 200px;
+        height: 300px;
+        border-radius: 20px;
+        justify-items: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        background-color: rgba(52, 52, 53, 0.612);
+    }
+
+    .product_cards2:has(> .product_card2:hover) > .product_card2 {
+        filter: blur(10px);
+
+        &:hover {
+            filter: blur(0);
+            transition: all 0.5s ease-in-out;
+            transform: scale(1.1);
+        }
+    }
+
+}
+
+
+/* 3 ряд */
+@media all {
+    .product_cards3 {
+        display: flex;
+        position: relative;
+        margin-top: 200px;
+        margin-bottom: 200px;
+        
+        justify-content: space-around;
+        justify-items: center;
+        align-items: center;
+        flex-grow: 0;
+        flex-wrap: wrap;
+    }
+
+
+    .product_card3 label {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    .product_card3 > div {
+        position: relative;
+        display: flex;
+        width: 200px;
+        height: 300px;
+        justify-items: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        background-color: rgba(52, 52, 53, 0.612);
+    }
+
+    .product_card3:hover > div {
+        position: relative;
+        transition: all 0.5s linear;
+        z-index: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: calc(100% + 3px);
+            height: calc(100% + 3px);
+            background: repeating-conic-gradient(from var(--a), rgb(217, 0, 255) 0%, 
+            rgb(217, 0, 255) 5%, transparent 5%, transparent 40%, 
+            rgb(217, 0, 255) 50%);
+            animation: 1s border_point linear infinite;
+            z-index: -1;
+        }
+
+        
+    }
+
+    @property --a {
+        syntax: '<angle>';
+        inherits: false;
+        initial-value: 0deg;
+    }
+
+    @keyframes border_point {
+        0% {
+            --a: 0deg;
+        }
+        100% {
+            --a: 360deg;
+        }
+    }
+}
 
 .all_products {
     display: flex;
