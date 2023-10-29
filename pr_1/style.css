@@ -21,6 +21,9 @@ html {
 
 body {
     margin: 0;
+    display: grid;
+    grid-template-rows: 75px auto auto auto;
+
 }
 
 /* нет таких */
@@ -53,7 +56,6 @@ p b {
         grid-template-rows: auto;
         align-items: center;
         justify-items: center;
-        z-index: 100;
     
     
         position: sticky;
@@ -538,18 +540,13 @@ p b {
 .WhatIsCPU {
     display: block;
     position: relative;
-    padding: 10% 5%;
+    padding: 8rem 4rem;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), 
     url(Images/Start_processor.jpg);
 
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-.WhatIsCPU h2 {
-    padding-top: 4rem;
-    margin-top: -4rem;
 }
 
 .WhatIsCPU p {
@@ -580,14 +577,9 @@ p b {
 }
 
 .Developers h2 {
-    padding-top: 15%;
-    margin-top: -5%;
+    padding-top: 10%;
 }
 
-.Developers h3 {
-    padding-top: 4rem;
-    margin-top: -4rem;
-}
 
 
 .row {
@@ -616,31 +608,12 @@ p b {
 
 
 
-/* .term {
-    padding: 10% 5%;
-}
-
-.term h2 {
-    padding-top: 15%;
-    margin-top: -5%;
-}
-
-.term dt {
-    padding: 40px 0px;
-}
-
-.term dd {
-    font-size: 0.8rem;
-    padding: 10px 0px;
-} */
-
 .how_it_works {
     padding: 10% 5%;
 }
 
 .how_it_works h2 {
-    padding-top: 15%;
-    margin-top: -5%;
+    padding-top: 10%;
 }
 
 .video {
@@ -648,28 +621,6 @@ p b {
     overflow: hidden;
     width: 560px;
     
-}
-
-.video:hover {
-    &::before {
-        content: 'Видео с объяснением';
-        text-align: center;
-        
-        position: absolute;
-        background-color: black;
-        width: 300px;
-        height: 30px;
-        animation: 0.5s video_description ease-out forwards;
-    }
-}
-
-@keyframes video_description {
-    from {
-        transform: translate(100px, -10px);
-    }
-    to {
-        transform: translate(100px, 0);
-    }
 }
 
 
