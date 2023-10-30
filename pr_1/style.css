@@ -3,7 +3,7 @@ html {
     color: whitesmoke;
     font-family: 'Open Sans', arial, sans-serif;
     background-color: black;
-    font-size: 150%;
+    font-size: calc(100vh * 0.025);
 }
 
 :link {
@@ -21,17 +21,31 @@ html {
 
 body {
     margin: 0;
+    position: relative;
     display: grid;
-    grid-template-rows: 75px calc(100vh - 75px) 125vh 100vh 100px;
-    grid-template-columns: 100%;
-    grid-template-areas: 
-        "Banner"
-        "What_is_CPU"
-        "Developers"
-        "How_it_works"
-        "Footer";
-
 }
+
+
+@media screen {
+    body {
+        --logo-width: 5vw;
+        --logo-height: calc(var(--logo-width) * 0.82);
+
+
+        grid-template-rows: calc(var(--logo-height) + 5px) calc(100vh - var(--logo-height) - 5px) 100vh 100vh 100px;
+        grid-template-columns: 100%;
+        grid-template-areas: 
+            "Banner"
+            "What_is_CPU"
+            "Developers"
+            "How_it_works"
+            "Footer";
+    
+    }
+}
+
+
+
 
 /* нет таких */
 /* h1 {
@@ -57,12 +71,12 @@ p b {
 /* баннер */
 @media all {
     .banner {
-        overflow: hidden;
         grid-area: Banner;
         z-index: 100;
         display: grid;
-        grid-template-columns: 150px auto 100px 100px;
+        grid-template-columns: 100px auto 100px;
         grid-template-rows: auto;
+        grid-template-areas: "Menu Logo Login";
         align-items: center;
         justify-items: center;
     
@@ -75,19 +89,22 @@ p b {
     }
     
     .logo {
+        grid-area: Logo;
+        
+
+        width: var(--logo-width);
+        height: var(--logo-height);
         position: relative;
         display: block;
-        grid-column: 1 / 2;
-        padding: 10px 0;
+
     }
 
 
     /* три полоски */
     @media all {
         .menu {
-            margin-right: 25px;
-            grid-column: 2 / 3;
-            justify-self: end;
+            grid-area: Menu;
+            justify-self: center;
         }
 
         [name="hide_menu"] {
@@ -158,154 +175,13 @@ p b {
         
     }
 
-    /* уведомления */
-    @media all {
-        .notifications {
-            display: block;
-            flex-direction: column;
-            width: auto;
-            grid-column: 3 / 4;
-            position: relative;
-            transition: all 0.3s ease-in-out;
-            
-        }
 
-        .notifications:hover {
-            
-            animation: 0.5s to-square ease-in-out forwards;
-        }
-    
-        .notification_list {
-            position: absolute;
-            width: inherit;
-            display: flex;
-            flex-direction: column;
-            visibility: hidden;
-            background-color: rgb(41, 41, 42);
-        }
-
-        .notifications:hover > .notification_list {
-            animation-name: show-content;
-            animation-duration: 0.3s;
-            animation-fill-mode: forwards;
-            animation-delay: 0.3s;
-        }
-
-
-        
-
-        .notification_list > div {
-            position: relative;
-            width: 100%;
-            padding: 0.5rem 0;
-            margin: 0;
-            overflow: hidden;
-            z-index: 1;
-            
-        }
-
-        .notification_list > div:hover::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: -100%;
-            z-index: -1;
-            
-            background: repeating-linear-gradient(to right, rgb(238, 255, 0) -50%, rgba(255, 0, 0, 0));
-            animation: 0.5s notification_hover ease-in-out forwards;
-        }
-
-        .notifications:hover div img {
-            display: inline-block;
-            width: 0;
-        }
-
-        .notifications:hover div:hover > img {
-            animation: 0.5s appear ease-in-out forwards;
-        }
-
-        .notification_list div p {
-            display: inline-block;
-        }
-
-        .notification_list > p {
-            cursor: pointer;
-            text-align: center;
-            display: block;
-            width: 100px;
-            align-self: center;
-            font-size: 0.6rem;
-            background: red;
-            border: 3px transparent solid;
-            
-        }
-
-        .notification_list > p:hover {
-            animation: 0.5s more ease-in-out forwards;
-        }
-
-        @keyframes to-square {
-            from {
-
-                width: 100px;
-            }
-            50% {
-                transform: translateX(-100px);
-                width: 300px;
-            }
-            to {
-                border-top-right-radius: 20px;
-                border-top-left-radius: 20px;
-                transform: translateX(-100px);
-                background-color: rgb(175, 47, 189);
-                padding-left: 5px;
-                padding-top: 5px;
-                width: 300px;
-            }
-        }
-
-        @keyframes show-content {
-            from {
-                width: 305px;
-                right: 0;
-            }
-            to {
-                width: 305px;
-                right: 0;
-                border-bottom-right-radius: 20px;
-                border-bottom-left-radius: 20px;
-                visibility: visible;
-            }
-        }
-
-        @keyframes notification_hover {
-            to {
-                transform: translateX(100%);
-            }
-        }
-
-        @keyframes appear {
-            to {
-                width: 2rem;
-            }
-        }
-
-        @keyframes more {
-            to {
-                background: transparent;
-                border-color: brown;
-                transform: scale(1.2);
-                border-radius: 10px;
-            }
-        }
-    }
     
     
     .login {
+        grid-area: Login;
         position: relative;
         display: block;
-        grid-column: 4 / 5;
         
     }
     
@@ -330,9 +206,9 @@ p b {
         display: none;
         position: fixed;
         width: 60vh;
-        height: 40vh;
+        height: 50vh;
         left: calc(50vw - 30vh);
-        top: 30vh;
+        top: 25vh;
         padding: 0 20px;
         border-radius: 20px;
         backdrop-filter: blur(10px);
@@ -394,10 +270,10 @@ p b {
 
     @keyframes before-random {
         from {
-            transform: translate(-23vh, 25vh);
+            transform: translate(-23vh, 32vh);
         }
         to {
-            transform: translate(-10vh, 25vh);
+            transform: translate(-10vh, 32vh);
         }
     }
 
@@ -440,10 +316,6 @@ p b {
 
 /* меню */
 @media all {
-    nav {
-        padding: 0 30px;
-    }
-    
     .navigate {
         flex-direction: column;
         visibility: hidden;
@@ -547,21 +419,32 @@ p b {
 
 
 .WhatIsCPU {
+    overflow: hidden;
     grid-area: What_is_CPU;
-    display: block;
+    display: flex;
+    align-items: center;
     position: relative;
-    padding: 8rem 4rem;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), 
-    url(Images/Start_processor.jpg);
+    padding: 0 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
 
-    background-position: center;
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0), rgb(0, 0, 0)), 
+        url(Images/cpu_background.jpg);
+
+    background-position: right;
     background-size: cover;
     background-repeat: no-repeat;
-}
 
-.WhatIsCPU p {
-    font-size: 1.1rem;
-    width: 50%;
+    & div {
+        margin-left: 5rem;
+
+        & p {
+            font-size: 1.1rem;
+            width: 50%;
+        }
+    }
+
 }
 
 
@@ -583,24 +466,41 @@ p b {
 
 
 .Developers {
-    padding: 10% 5%;
+    align-self: center;
+    margin: 0 3rem;
+    position: relative;
+    display: block;
     grid-area: Developers;
 }
 
-.Developers h2 {
-    padding-top: 10%;
-}
-
-
 
 .row {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
+    column-gap: 5%;
+    align-items: center;
 }
 
 .column {
-    flex: 50%;
+    --width: 30vw;
+    --height: calc(var(--width) * 0.625);
+
+    position: relative;
+    flex: 45%;
+
+    & img {
+        width: var(--width);
+        height: var(--height);
+    }
 }
+
+
+
+
+
+
+
 
 
 
@@ -621,17 +521,20 @@ p b {
 
 .how_it_works {
     grid-area: How_it_works;
-    padding: 10% 5%;
+    margin: 0 3rem;
 }
 
-.how_it_works h2 {
-    padding-top: 10%;
-}
 
-.video {
+
+.how_it_works iframe {
+    --width: 50vw;
+    --height: calc(var(--width) * 0.5625);
+
+
     position: relative;
     overflow: hidden;
-    width: 560px;
+    width: var(--width);
+    height: var(--height);
     
 }
 
@@ -704,13 +607,18 @@ footer {
     display: flex;
     position: relative;
     padding-left: 10px;
-    padding-top: 10%;
     column-gap: 1rem;
     font-size: 0.6rem;
     justify-content: space-between;
     flex-grow: 0;
     column-gap: 10px;
     height: 100px;
+}
+
+@media screen and (max-width: 530px) {
+    footer {
+        flex-direction: column;
+    }
 }
 
 
