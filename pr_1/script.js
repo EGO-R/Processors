@@ -49,8 +49,6 @@ else {
     console.log("Не регистрируемся");
 }
 
-
-// todo: check first color
 function like_button(element) {
     console.log(element.style.color);
     if (element.style.color === 'white') {
