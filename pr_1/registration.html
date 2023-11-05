@@ -1,75 +1,167 @@
-<input type="radio" id="register" name="login_button">
-<label for="register">Регистрация</label>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initialscale=1.0">
+    <title>Процессоры</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+</head>
 
 
-<form action="" method="post" class="register_form">
-    <p>
-        <label for="pic">Выберите файл: </label><br>
-        <input type="file" name="pic" id="pic" accept="image/gif, image/png, image/jpg, image/jpeg">
-    </p>
 
-    <p>
-        <label for="name">Введите имя аккаунта: </label><br>
-        <input type="text" name="name" id="name" required>
-    </p>
 
-    <p>
-        <label for="about">Расскажите о себе: </label><br>
-        <textarea name="about" id="about"></textarea>
-    </p>
+<body>
 
-    <fieldset>
-        <legend>Выберите Ваш пол:</legend>
+    <div class="banner">
+
+        <div class="menu">
+            <input type="checkbox" name="hide_menu" id="hide_menu">
+            <label for="hide_menu">
+                <div class="fstripe"></div>
+                <div class="sstripe"></div>
+                <div class="tstripe"></div>
+            </label>
+
+            <ul class="navigate">
+                <li><a href="#Topic2">Что такое процессор?</a></li>
+                <li><a href="#Topic3">Ведущие производители</a>
+                    <ul class="submenu">
+                        <li><a href="#Topic4">Intel</a></li>
+                        <li><a href="#Topic5">Amd</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Topic6">Как процессор устроен</a></li>
+                <li><a href="shop_page.html">Магазин</a></li>
+            </ul>
+        </div>
+
+
+        <!-- Главный заголовок -->
+        <a href="main_page.html"><img src="Images/cpu-logo.png" class="logo" width="1167px" height="957px"></a>
+
+
+
+
         
-        <label>
-            <input type="radio" name="sex" value="male">
-            М
-        </label>
+             
 
-        <label>
-            <input type="radio" name="sex" value="female">
-            Ж
-        </label>
-    </fieldset>
+        <div class="login">
+            <input type="checkbox" name="logging_in" id="logging_in" required>
+            <label for="logging_in"><img src="Images\login_img.png" width="50px" class="login_img"></label>
+            
 
-    <p>
-        <label for="city">Ваш город</label>
-        <select name="city" id="city" multiple size="2">
+            <div class="forms">
+
+
+                <h2>Вход</h2>
+
+                <form action="" method="post" class="sign_in_form">
+                    <input type="text" name="mail_login" id="mail_login" required placeholder="Логин">
+
+    
+                    <input type="password" name="password_login" id="password_login" required placeholder="Пароль">
+
+                    <p>Нет аккаунта? <a href="registration.html">Зарегистрироваться</a></p>
+
+                    <button type="submit">Войти</button>
+                </form>
+
+            </div>
+
+            
+        </div>
+        
+    </div>
+
+    <h2>Регистрация</h2>
+
+    <form action="" method="post" class="register_form">
+
+        <div id="pic1">
+            <input type="file" name="pic" id="pic" accept="image/gif, image/png, image/jpg, image/jpeg">
+            <label for="pic">Выберите файл</label>
+
+        </div>
+
+        <input type="text" name="name" id="name" required placeholder="Отображаемое имя">
+
+        <input type="text" name="first-name" id="first-name" required placeholder="Имя">
+
+        <input type="text" name="last-name" id="last-name" required placeholder="Фамилия">
+
+        <input type="email" name="mail_register" id="mail_register" placeholder="Почта">
+
+        <input type="tel" name="telephone" id="telephone" required pattern="^[0-9]+$" placeholder="Телефон">
+        
+        <input type="datetime-local" name="date" id="date" required min="2000-01-01T00:00" max="2023-10-01T00:00">
+
+
+        <textarea name="about" id="about" placeholder="Расскажите о себе..."></textarea>
+
+
+        <fieldset id="sex">
+            <legend>Выберите Ваш пол:</legend>
+
+            <label>
+                <input type="radio" name="sex" value="male">
+                М
+            </label>
+
+            <label>
+                <input type="radio" name="sex" value="female">
+                Ж
+            </label>
+        </fieldset>
+
+
+        <select name="city" id="city">
             <option value="" selected>-- Выберите город --</option>
             <option value="Moscow">Москва</option>
             <option value="Not Moscow">Не Москва</option>
         </select>
-    </p>
-
-    <p>
-        <label for="mail_register">Введите почту: </label><br>
-        <input type="email" name="mail_register" id="mail_register" placeholder="qwerty@mail.ru">
-    </p>
-
-    <p>
-        <label for="telephone">Введите номер телефона: </label><br>
-        <input type="tel" name="telephone" id="telephone" required pattern="^[0-9]+$">
-    </p>
     
-    <p>
-        <label for="password_register1">Введите пароль: </label><br>
-        <input type="password" name="password_register1" id="password_register1" required>
-    </p>
+        
+    
+        
+    
+        <input type="password" name="password_register1" id="password_register1" required placeholder="Пароль">
 
-    <p>
-        <label for="password_register2">Повторите пароль: </label><br>
-        <input type="password" name="password_register2" id="password_register2" required>
-    </p>
+        <input type="password" name="password_register2" id="password_register2" required placeholder="Повторите пароль">
 
-    <p>
-        <input type="checkbox" name="agreed" id="agreed" required>
-        <label for="agreed">Я согласен с условиями</label>
-    </p>
+        <p id="agreed1">
+            <input type="checkbox" name="agreed" id="agreed" required>
+            <label for="agreed">Я согласен с условиями</label>
+        </p>
 
-    <p>
-        <label for="date">Введите дату: </label><br>
-        <input type="datetime-local" name="date" id="date" required min="2000-01-01T00:00" max="2023-10-01T00:00">
-    </p>
+        
 
-    <button type="submit">Зарегистрироваться</button>
-</form>
+        <button type="submit" id="send_button">Зарегистрироваться</button>
+    </form>
+
+
+    <footer>
+        <address>
+            <!-- Контактная информация -->
+            <p><i>Номер телефона:</i> <a href="tel:89258310755">89258310755</a></p>
+            <p><i>Адрес электронной почты:</i> <a href="mailto:egor_trusov00@mail.ru">egor_trusov00@mail.ru</a></p>
+        </address>
+    
+            <a class="yt-button"><img src="Images/yt.png" width="30px" height="22px"></a>
+        
+            <a class="vk-button"><img src="Images/vk.png" width="30px" height="18px"></a>
+        
+            <a class="tg-button"><img src="Images/tg.png" width="30px" height="27"></a>
+    
+        
+    </footer>
+
+
+
+
+</body>
+</html>

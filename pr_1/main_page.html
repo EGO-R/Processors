@@ -48,7 +48,7 @@
 
 
         <!-- Главный заголовок -->
-        <img src="Images/cpu-logo.png" class="logo" width="1167px" height="957px">
+        <a href="main_page.html"><img src="Images/cpu-logo.png" class="logo" width="1167px" height="957px"></a>
 
 
 
@@ -67,10 +67,12 @@
                 <h2>Вход</h2>
 
                 <form action="" method="post" class="sign_in_form">
-                    <input type="email" name="mail_login" id="mail_login" required placeholder="Логин">
+                    <input type="text" name="mail_login" id="mail_login" required placeholder="Логин">
 
     
                     <input type="password" name="password_login" id="password_login" required placeholder="Пароль">
+
+                    <p>Нет аккаунта? <a href="registration.html">Зарегистрироваться</a></p>
 
                     <button type="submit">Войти</button>
                 </form>
@@ -94,10 +96,10 @@
 
 
 
-
+    
     <section class="WhatIsCPU">
             <div>
-                <h2 id="Topic2"><b>Что такое процессор?</b></h2>
+                <h2 id="Topic2">Что такое процессор?</h2>
             <p><b>Центральный процессор</b> — электронный блок либо интегральная схема,
                 исполняющая машинные инструкции, главная часть аппаратного обеспечения
                 компьютера или программируемого логического контроллера.</p>
@@ -120,20 +122,13 @@
     <section class="Developers">
         <!-- Краткая информация о ведущих производителях процессоров -->
         
-        <h2 id="Topic3"><b>Ведущие производители</b></h2>
+        <h2 id="Topic3">Ведущие производители</h2>
         
         <div class="row">
             <div class="column">
                 <p>В настоящее время рынок между собой делят Intel и Amd.</p>
 
                 <img src="Images/Intel_VS_Amd.png" usemap="#Intel_Amd">
-                <map name="Intel_Amd">
-                    <area shape="poly" coords="47,136,266,38,324,127,285,248,312,270,142,366" 
-                    href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank">
-
-                    <area shape="poly" coords="373,15,582,104,556,336,297,243" 
-                    href="https://www.amd.com/en.html" target="_blank">
-                </map>
             </div>
 
             <div class="column">
@@ -169,7 +164,7 @@
 
 
     <section class="how_it_works">
-        <h2 id="Topic6"><b>Как процессор устроен</b></h2>
+        <h2 id="Topic6">Как процессор устроен</h2>
 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/qIhZrMg3_Tk?si=IIBI4sfC_hNIEcQ3" 
         title="YouTube video player" frameborder="0" 
@@ -217,15 +212,13 @@
             <p><i>Адрес электронной почты:</i> <a href="mailto:egor_trusov00@mail.ru">egor_trusov00@mail.ru</a></p>
         </address>
     
-        <div class="socials">
+
+        <a class="yt-button"><img src="Images/yt.png" width="30px" height="22px"></a>
         
-            <a class="yt-button"><img src="Images/yt.png" width="30px" height="22px"></a>
+        <a class="vk-button"><img src="Images/vk.png" width="30px" height="18px"></a>
         
-            <a class="vk-button"><img src="Images/vk.png" width="30px" height="18px"></a>
-        
-            <a class="tg-button"><img src="Images/tg.png" width="30px" height="27"></a>
-            
-        </div>
+        <a class="tg-button"><img src="Images/tg.png" width="30px" height="27"></a>
+
     
         
     </footer>

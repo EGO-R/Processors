@@ -25,34 +25,37 @@
 
 <body>
     <div class="banner">
-        <!-- Главный заголовок -->
-        <img src="Images/logo3.png" class="logo" width="102px" height="55px">
 
-        
-        <div class="notifications">
-            <img src="Images/notifications.png" class="notification_img" width="50px" height="45px">
-            <div class="notification_list">
-                <div>
-                    <img src="Images/arrow.png" class="notification_img" width="43px" height="14px">
-                    <p>List item 1</p>
-                </div>
-                <div>
-                    <img src="Images/arrow.png" class="notification_img" width="43px" height="14px">
-                    <p>List item 2</p>
-                </div>
-                <div>
-                    <img src="Images/arrow.png" class="notification_img" width="43px" height="14px">
-                    <p>List item 3</p>
-                </div>
-                <div>
-                    <img src="Images/arrow.png" class="notification_img" width="43px" height="14px">
-                    <p>List item 4</p>
-                </div>
+        <div class="menu">
+            <input type="checkbox" name="hide_menu" id="hide_menu">
+            <label for="hide_menu">
+                <div class="fstripe"></div>
+                <div class="sstripe"></div>
+                <div class="tstripe"></div>
+            </label>
 
-                <p>More...</p>
-            </div>
+            <ul class="navigate">
+                <li><a href="#Topic2">Что такое процессор?</a></li>
+                <li><a href="#Topic3">Ведущие производители</a>
+                    <ul class="submenu">
+                        <li><a href="#Topic4">Intel</a></li>
+                        <li><a href="#Topic5">Amd</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Topic6">Как процессор устроен</a></li>
+                <li><a href="shop_page.html">Магазин</a></li>
+            </ul>
         </div>
+
+
+        <!-- Главный заголовок -->
+        <a href="main_page.html"><img src="Images/cpu-logo.png" class="logo" width="1167px" height="957px"></a>
+
+
+
+
         
+             
 
         <div class="login">
             <input type="checkbox" name="logging_in" id="logging_in" required>
@@ -61,200 +64,28 @@
 
             <div class="forms">
 
-                <input type="radio" id="sign_in" name="login_button" checked>
-                <label for="sign_in">Вход</label>
 
-                <input type="radio" id="register" name="login_button">
-                <label for="register">Регистрация</label>
-
-                
-
-
-
-
+                <h2>Вход</h2>
 
                 <form action="" method="post" class="sign_in_form">
-                    <p>
-                        <label for="mail_login">Введите почту: </label><br>
-                        <input type="email" name="mail_login" id="mail_login" required>
-                    </p>
+                    <input type="text" name="mail_login" id="mail_login" required placeholder="Логин">
+
     
-                    <p>
-                        <label for="password_login">Введите пароль: </label><br>
-                        <input type="password" name="password_login" id="password_login" required>
-                    </p>
+                    <input type="password" name="password_login" id="password_login" required placeholder="Пароль">
+
+                    <p>Нет аккаунта? <a href="registration.html">Зарегистрироваться</a></p>
 
                     <button type="submit">Войти</button>
                 </form>
 
-                
-
-
-
-
-
-
-
-                <form action="" method="post" class="register_form">
-                    <p>
-                        <label for="pic">Выберите файл: </label><br>
-                        <input type="file" name="pic" id="pic" accept="image/gif, image/png, image/jpg, image/jpeg">
-                    </p>
-
-                    <p>
-                        <label for="name">Введите имя аккаунта: </label><br>
-                        <input type="text" name="name" id="name" required>
-                    </p>
-
-                    <p>
-                        <label for="about">Расскажите о себе: </label><br>
-                        <textarea name="about" id="about"></textarea>
-                    </p>
-
-                    <fieldset>
-                        <legend>Выберите Ваш пол:</legend>
-                        
-                        <label>
-                            <input type="radio" name="sex" value="male">
-                            М
-                        </label>
-
-                        <label>
-                            <input type="radio" name="sex" value="female">
-                            Ж
-                        </label>
-                    </fieldset>
-
-                    <p>
-                        <label for="city">Ваш город</label>
-                        <select name="city" id="city" multiple size="2">
-                            <option value="" selected>-- Выберите город --</option>
-                            <option value="Moscow">Москва</option>
-                            <option value="Not Moscow">Не Москва</option>
-                        </select>
-                    </p>
-
-                    <p>
-                        <label for="mail_register">Введите почту: </label><br>
-                        <input type="email" name="mail_register" id="mail_register" placeholder="qwerty@mail.ru">
-                    </p>
-
-                    <p>
-                        <label for="telephone">Введите номер телефона: </label><br>
-                        <input type="tel" name="telephone" id="telephone" required pattern="^[0-9]+$">
-                    </p>
-                    
-                    <p>
-                        <label for="password_register1">Введите пароль: </label><br>
-                        <input type="password" name="password_register1" id="password_register1" required>
-                    </p>
-
-                    <p>
-                        <label for="password_register2">Повторите пароль: </label><br>
-                        <input type="password" name="password_register2" id="password_register2" required>
-                    </p>
-
-                    <p>
-                        <input type="checkbox" name="agreed" id="agreed" required>
-                        <label for="agreed">Я согласен с условиями</label>
-                    </p>
-
-                    <p>
-                        <label for="date">Введите дату: </label><br>
-                        <input type="datetime-local" name="date" id="date" required min="2000-01-01T00:00" max="2023-10-01T00:00">
-                    </p>
-
-                    <button type="submit">Зарегистрироваться</button>
-                </form>
             </div>
 
             
         </div>
-    </div>
-
-
-    <h2><b>Товары</b></h2>
-
-    <div class="product_cards">
-        <div class="product_card">
-            <div>
-                <div class="first-square"></div>
-                <div class="second-square"></div>
-                <input type="checkbox" name="amd_button" id="amd_button">
-                <label for="amd_button">AMD products</label>
-            </div>
-        </div>
-
-        <div class="product_card">
-            <div>
-                <div class="first-square"></div>
-                <div class="second-square"></div>
-                <input type="checkbox" name="intel_button" id="intel_button">
-                <label for="intel_button">Intel products</label>
-            </div>
-        </div>
-        
-        <div class="product_card">
-            <div>
-                <div class="first-square"></div>
-                <div class="second-square"></div>
-                <input type="checkbox" name="all_button" id="all_button">
-                <label for="all_button">All products</label>
-            </div>
-        </div>
         
     </div>
 
-
-    <div class="product_cards2">
-        <div class="product_card2">
-            <div>
-                <input type="checkbox" name="amd_button" id="amd_button">
-                <label for="amd_button">AMD products</label>
-            </div>
-        </div>
-
-        <div class="product_card2">
-            <div>
-                <input type="checkbox" name="intel_button" id="intel_button">
-                <label for="intel_button">Intel products</label>
-            </div>
-        </div>
-        
-        <div class="product_card2">
-            <div>
-                <input type="checkbox" name="all_button" id="all_button">
-                <label for="all_button">All products</label>
-            </div>
-        </div>
-        
-    </div>
-
-
-    <div class="product_cards3">
-        <div class="product_card3">
-            <div>
-                <input type="checkbox" name="amd_button" id="amd_button">
-                <label for="amd_button">AMD products</label>
-            </div>
-        </div>
-
-        <div class="product_card3">
-            <div>
-                <input type="checkbox" name="intel_button" id="intel_button">
-                <label for="intel_button">Intel products</label>
-            </div>
-        </div>
-        
-        <div class="product_card3">
-            <div>
-                <input type="checkbox" name="all_button" id="all_button">
-                <label for="all_button">All products</label>
-            </div>
-        </div>
-        
-    </div>
-    
+    <h2>Товары</h2>
 
     
     <article class="all_products">
@@ -343,79 +174,25 @@
         </section>
     </article>
 
-    <!-- <article class="amd_products">
-        <section class="cpu">
-            <img src="Products/amd.png" height="100">
-            <div>
-                <p>amd</p>
-            </div>
-        </section>
+    
 
-        <section class="cpu">
-            <img src="Products/amd.png" height="100">
-            <div>
-                <p>amd</p>
-            </div>
-        </section>
+    <footer>
+        <address>
+            <!-- Контактная информация -->
+            <p><i>Номер телефона:</i> <a href="tel:89258310755">89258310755</a></p>
+            <p><i>Адрес электронной почты:</i> <a href="mailto:egor_trusov00@mail.ru">egor_trusov00@mail.ru</a></p>
+        </address>
+    
 
-        <section class="cpu">
-            <img src="Products/amd.png" height="100">
-            <div>
-                <p>amd</p>
-            </div>
-        </section>
+            <a class="yt-button"><img src="Images/yt.png" width="30px" height="22px"></a>
+        
+            <a class="vk-button"><img src="Images/vk.png" width="30px" height="18px"></a>
+        
+            <a class="tg-button"><img src="Images/tg.png" width="30px" height="27"></a>
 
-        <section class="cpu">
-            <img src="Products/amd.png" height="100">
-            <div>
-                <p>amd</p>
-            </div>
-        </section>
-
-        <section class="cpu">
-            <img src="Products/amd.png" height="100">
-            <div>
-                <p>amd</p>
-            </div>
-        </section>
-    </article>
-
-    <article class="intel_products">
-        <section class="cpu">
-            <img src="Products/intel.png" height="100px">
-            <div>
-                <p>intel</p>
-            </div>
-        </section>
-
-        <section class="cpu">
-            <img src="Products/intel.png" height="100px">
-            <div>
-                <p>intel</p>
-            </div>
-        </section>
-
-        <section class="cpu">
-            <img src="Products/intel.png" height="100px">
-            <div>
-                <p>intel</p>
-            </div>
-        </section>
-
-        <section class="cpu">
-            <img src="Products/intel.png" height="100px">
-            <div>
-                <p>intel</p>
-            </div>
-        </section>
-
-        <section class="cpu">
-            <img src="Products/intel.png" height="100px">
-            <div>
-                <p>intel</p>
-            </div>
-        </section>
-    </article> -->
+    
+        
+    </footer>
 
 
 

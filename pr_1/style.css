@@ -3,7 +3,13 @@ html {
     color: whitesmoke;
     font-family: 'Open Sans', arial, sans-serif;
     background-color: black;
-    font-size: calc(100vh * 0.025);
+    font-size: calc(100vh * 0.027);
+}
+
+@media screen and (max-width: 540px) {
+    html {
+        font-size: calc(100vh * 0.025);
+    }
 }
 
 :link {
@@ -23,24 +29,25 @@ body {
     margin: 0;
     position: relative;
     display: grid;
+
+    --logo-height: 7vh;
+    --logo-width: calc(var(--logo-height) * 1.22);
+
+
+    grid-template-rows: calc(var(--logo-height) + 5px) calc(100vh - var(--logo-height) - 5px) 100vh 100vh 100px;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+        "Banner"
+        "What_is_CPU"
+        "Developers"
+        "How_it_works"
+        "Footer";
 }
 
 
-@media screen {
+@media screen and (max-width: 540px) {
     body {
-        --logo-width: 5vw;
-        --logo-height: calc(var(--logo-width) * 0.82);
-
-
-        grid-template-rows: calc(var(--logo-height) + 5px) calc(100vh - var(--logo-height) - 5px) 100vh 100vh 100px;
-        grid-template-columns: 100%;
-        grid-template-areas: 
-            "Banner"
-            "What_is_CPU"
-            "Developers"
-            "How_it_works"
-            "Footer";
-    
+        grid-template-rows: calc(var(--logo-height) + 5px) calc(100vh - var(--logo-height) - 5px) 100vh 100vh 200px;
     }
 }
 
@@ -75,7 +82,7 @@ p b {
         z-index: 100;
         display: grid;
         grid-template-columns: 100px auto 100px;
-        grid-template-rows: auto;
+        grid-template-rows: 100%;
         grid-template-areas: "Menu Logo Login";
         align-items: center;
         justify-items: center;
@@ -84,7 +91,6 @@ p b {
         position: sticky;
         width: 100%;
         top: 0;
-        /* padding-right: 100%; */
         background-color: rgb(0, 0, 0);
     }
     
@@ -104,7 +110,14 @@ p b {
     @media all {
         .menu {
             grid-area: Menu;
+            position: relative;
             justify-self: center;
+
+            --stripes-height: calc(var(--logo-height) * 0.5);
+            --stripes-width: calc(var(--stripes-height) * 1.5);
+
+            height: var(--stripes-height);
+            width: var(--stripes-width);
         }
 
         [name="hide_menu"] {
@@ -112,18 +125,22 @@ p b {
         }
 
         [for="hide_menu"] {
+            
+            width: 100%;
+            height: 100%;
+
             cursor: pointer;
-            height: 41px;
-            width: 60px;
+            
             display: block;
         }
 
         [for="hide_menu"] > div {
             position: absolute;
+            top: 0;
 
             background-color: wheat;
-            width: 60px;
-            height: 7px;
+            width: 100%;
+            height: 20%;
             border-radius: 5px;
             transition: all 0.3s ease-in-out;
         }
@@ -132,45 +149,39 @@ p b {
             visibility: visible;
         }
 
-        [for="hide_menu"] > .sstripe {
-            margin-top: 17px;
-        }
+        [for="hide_menu"] {
 
-        [for="hide_menu"] > .tstripe {
-            margin-top: 34px;
-        }
+            & > .sstripe {
+                margin-top: calc(var(--stripes-height) * 0.4);
+            }
 
-        #hide_menu:checked + [for="hide_menu"] .fstripe {
-            animation: 0.5s fstripe ease-in-out forwards;
-        }
+            & > .tstripe {
+                margin-top: calc(var(--stripes-height) * 0.8);
+            }
 
-        @keyframes fstripe {
-            to {
-                transform: translateY(17px) rotate(-45deg);
+        } 
+
+
+        #hide_menu:checked + [for="hide_menu"] {
+
+            & .fstripe {
+                transform: translateY(calc(var(--stripes-height) * 0.4)) 
+                rotate(-45deg);
                 background-color: red;
             }
-        }
 
-        #hide_menu:checked + [for="hide_menu"] .sstripe {
-            animation: 0.5s sstripe ease-in-out forwards;
-        }
-
-        @keyframes sstripe {
-            50%, to {
+            & .sstripe {
                 opacity: 0;
             }
-        }
 
-        #hide_menu:checked + [for="hide_menu"] .tstripe {
-            animation: 0.5s tstripe ease-in-out forwards;
-        }
-
-        @keyframes tstripe {
-            to {
-                transform: translateY(-17px) rotate(45deg);
+            & .tstripe {
+                transform: translateY(calc(var(--stripes-height) * -0.4)) 
+                rotate(45deg);
                 background-color: red;
             }
-        }
+
+
+        } 
 
         
     }
@@ -183,10 +194,14 @@ p b {
         position: relative;
         display: block;
         
+        width: calc(var(--logo-height) * 0.8);
+        height: calc(var(--logo-height) * 0.8);
     }
     
     .login_img {
         cursor: pointer;
+        width: 100%;
+        height: 100%;
     }
 
 
@@ -206,14 +221,18 @@ p b {
         display: none;
         position: fixed;
         width: 60vh;
-        height: 50vh;
+        height: 60vh;
         left: calc(50vw - 30vh);
         top: 25vh;
-        padding: 0 20px;
         border-radius: 20px;
         backdrop-filter: blur(10px);
         background-color: rgba(45, 45, 45, 0.762);
         z-index: 1;
+
+        & h2 {
+            display: block;
+            margin-left: 1rem;
+        }
 
         
     }
@@ -224,21 +243,15 @@ p b {
         display: block;
     }
 
-    .forms h2 {
-        display: block;
-    }
-
-    .forms input {
-        height: 30px;
-    }
 
     .sign_in_form {
         position: relative;
+        margin: 0 1rem;
         display: flex;
         flex-direction: column;
         flex-grow: 0;
         flex-shrink: 0;
-        row-gap: 50px;
+        row-gap: 20px;
     }
 
     #logging_in:checked ~ .forms .sign_in_form {
@@ -270,38 +283,66 @@ p b {
 
     @keyframes before-random {
         from {
-            transform: translate(-23vh, 32vh);
+            transform: translate(-30vh, 32vh);
         }
         to {
-            transform: translate(-10vh, 32vh);
+            transform: translate(-15vh, 32vh);
         }
     }
 
     @keyframes after-random {
         from {
-            transform: translate(60vh, -40vh);
+            transform: translate(50vh, -40vh);
         }
         to {
-            transform: translate(60vh, -20vh);
+            transform: translate(50vh, -20vh);
         }
     }
     
     
     
     
-    input {
-        background-color: rgb(122, 122, 122);
-        border-radius: 20px;
+   .forms input {
+        font-family: inherit;
+        font-size: 0.8rem;
+        line-height: inherit;
+        margin: 0;
+        display: block;
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
+        color: black;
+        background-color: rgb(7, 91, 84);
+        background-clip: padding-box;
+        border: 1px solid black;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, 
+        box-shadow 0.15s ease-in-out;
+        z-index: 1;
+
+        
+
+        &::placeholder    {
+            color: rgb(0, 0, 0);
+            opacity: 0.4;
+        }
+
+        &:focus {
+            outline: 0;
+            background-color: rgb(7, 76, 91);
+            box-shadow: 0 0 0.2rem 0.2rem rgb(7, 91, 84);
+        }
+
+
+        
+    }
+
+    .sign_in_form p {
+        & a:hover {
+            text-decoration: underline;
+        }
     }
     
 
-    
-    ::placeholder, input[type="datetime-local"], textarea {
-        --text_color: rgb(245, 245, 245);
-        color: var(--text_color);
-        font-size: 0.8rem;
-        font-family: inherit;
-    }
     
     .forms button {
         width: 200px;
@@ -311,6 +352,14 @@ p b {
         cursor: pointer;
     }
 
+}
+
+
+@media screen and (max-width: 540px) {
+    .forms {
+        width: 90vw;
+        left: 5vw;
+    }
 }
 
 
@@ -325,7 +374,7 @@ p b {
         bottom: 0;
         margin: 0;
         width: 100vw;
-        height: calc(100vh - 75px);
+        height: calc(100vh - var(--logo-height) - 5px);
         background-color: rgba(0, 0, 0, 0.856);
         display: flex;
         justify-content: space-between;
@@ -389,15 +438,6 @@ p b {
 
 
 
-@media screen and (max-width: 1100px) {
-    .navigate {
-        right: 0;
-        bottom: 0;
-        margin: 0;
-        width: 100vw;
-        height: calc(100vh - 75px);
-    }
-}
 
 
 
@@ -447,6 +487,16 @@ p b {
 
 }
 
+@media screen and (max-width: 540px) {
+    .WhatIsCPU div {
+        margin: 0 1rem;
+
+        & p {
+            width: 100%;
+        }
+    }
+}
+
 
 
 
@@ -474,6 +524,8 @@ p b {
 }
 
 
+
+
 .row {
     position: relative;
     display: flex;
@@ -483,7 +535,7 @@ p b {
 }
 
 .column {
-    --width: 30vw;
+    --width: 40vw;
     --height: calc(var(--width) * 0.625);
 
     position: relative;
@@ -492,6 +544,16 @@ p b {
     & img {
         width: var(--width);
         height: var(--height);
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .Developers {
+        margin: 0 1rem;
+
+        & .row {
+            flex-direction: column;
+        }
     }
 }
 
@@ -521,6 +583,7 @@ p b {
 
 .how_it_works {
     grid-area: How_it_works;
+    align-self: center;
     margin: 0 3rem;
 }
 
@@ -536,6 +599,20 @@ p b {
     width: var(--width);
     height: var(--height);
     
+}
+
+@media screen and (max-width: 540px) {
+    .how_it_works {
+        margin: 0 1rem;
+
+        & iframe {
+            --width: 80vw;
+            --height: calc(var(--width) * 0.5625);
+
+            width: var(--width);
+            height: var(--height);
+        }
+    }
 }
 
 
@@ -603,40 +680,56 @@ aside > a:hover > img {
 
 footer {
     grid-area: Footer;
+    width: auto;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: auto repeat(3, 50px);
+    grid-template-rows: 100px;
+    grid-template-areas: "Address Yt Vk Tg";
+    align-items: center;
+
     position: relative;
-    padding-left: 10px;
-    column-gap: 1rem;
+    padding-right: 65px;
     font-size: 0.6rem;
     justify-content: space-between;
-    flex-grow: 0;
     column-gap: 10px;
-    height: 100px;
+
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 560px) {
     footer {
-        flex-direction: column;
+        grid-template-columns: 1fr repeat(3, 50px) 1fr;
+        grid-template-rows: repeat(2, 100px);
+        grid-template-areas: 
+            "Address Address Address Address Address"
+            "Empty1 Yt Vk Tg Empty2";
+        margin-left: 0;
     }
 }
 
 
+
 footer > address {
-    width: 350px;
-    align-self: center;
-    flex-shrink: 0;
+    grid-area: Address;
+    margin-left: 10px;
 }
 
-.socials {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    justify-items: center;
-    align-items: center;
-
+@media screen and (min-width: 540px) {
+    footer > address {
+        width: 300px;
+    }
 }
+
+
+
+
+.yt-button {grid-area: Yt;}
+
+.vk-button {grid-area: Vk;}
+
+.tg-button {grid-area: Tg;}
+
+
 
 .yt-button, .vk-button, .tg-button {
     position: relative;
@@ -673,4 +766,5 @@ footer > address {
         transform: translateY(100%);
     }
 }
+
 

@@ -1,45 +1,213 @@
-#logging_in:checked ~ .forms {
+body {
+    margin: 0;
+    position: relative;
+    display: grid;
+
+    --logo-height: 7vh;
+    --logo-width: calc(var(--logo-height) * 1.22);
+
+
+    grid-template-rows: calc(var(--logo-height) + 5px) 100px auto 100px;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+        "Banner"
+        "Header"
+        "Form"
+        "Footer";
+}
+
+
+h2 {
+    grid-area: Header;
     display: block;
+    margin-left: 1rem;
+}
+
+
+
+.register_form {
+    align-self: center;
+    grid-area: Form;
+    margin-left: 16%;
+    display: grid;
+    grid-template-rows: 10rem repeat(2, 4rem) auto repeat(3, 4rem) 100px auto;
+    grid-template-columns: repeat(2, 30%);
+    grid-template-areas: 
+        "Avatar Login"
+        "First_name Last_name"
+        "Mail Telephone"
+        "Date Information"
+        "Sex City"
+        "Password Password"
+        "Repeat_password Repeat_password"
+        "Agreed Agreed"
+        "Register_button Register_button";
     
+        align-items: center;
+        column-gap: 7%;
 }
 
-[for="sign_in"]:hover,  [for="register"]:hover, #sign_in:checked + label, #register:checked + label {
-    text-decoration: underline;
+@media screen and (max-width: 1015px) {
+    .register_form {
+        grid-template-rows: repeat(2, 7rem) repeat(5, 4rem) auto repeat(4, 4rem) 100px auto;
+        grid-template-columns: 60%;
+        grid-template-areas: 
+            "Avatar" 
+            "Login"
+            "First_name" 
+            "Last_name"
+            "Mail" 
+            "Telephone"
+            "Date" 
+            "Information"
+            "Sex" 
+            "City"
+            "Password"
+            "Repeat_password"
+            "Agreed"
+            "Register_button";
+    }
 }
 
-.sign_in_form, .register_form {
-    display: none;
+@media screen and (max-width: 540px) {
+    .register_form {
+        margin: 0 1rem;
+        grid-template-columns: 100%;
+    }
 }
 
-#sign_in:checked ~ .sign_in_form,  #register:checked ~ .register_form{
-    display: block;
-}
 
-[for="agreed"] {
-    font-size: 0.8rem;
-}
 
-input:valid {
-    background-color: rgb(111, 225, 111);
-}
-
-input:invalid {
-    background-color: rgb(228, 54, 54);
-}
-
-input:focus {
-    background-color: white;
-}
-
-input {
-    border-radius: 10px;
-}
-
-::placeholder, input[type="datetime-local" i], textarea {
-    color: black;
+#sex, #about, #city, #pic1, .register_form > input {
+    width: 80%;
     font-family: inherit;
+    font-size: 0.8rem;
+    line-height: inherit;
+    margin: 0;
+    display: block;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
 }
 
-#pic {
+.register_form > input, #city, #about, #pic1 {
+    
+    
     color: black;
+    background-color: rgb(7, 91, 84);
+    background-clip: padding-box;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+    z-index: 1;
+
+    
+
+    &::placeholder    {
+        color: rgb(0, 0, 0);
+        opacity: 0.4;
+    }
+
+    &:focus {
+        outline: 0;
+        background-color: rgb(7, 76, 91);
+        box-shadow: 0 0 0.5rem 0.5rem rgb(7, 91, 84);
+    }
 }
+
+
+
+
+
+
+
+
+#pic1 {
+    grid-area: Avatar;
+    position: relative;
+    display: grid;
+    align-items: center;
+
+    & #pic {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    & label {
+        opacity: 0.4;
+    }
+}
+
+#name {
+    grid-area: Login;
+}
+
+#first-name {
+    grid-area: First_name;
+}
+
+#last-name {
+    grid-area: Last_name;
+}
+
+#mail_register {
+    grid-area: Mail;
+}
+
+#telephone {
+    grid-area: Telephone;
+}
+
+#date {
+    grid-area: Date;
+}
+
+#about {
+    grid-area: Information;
+}
+
+#sex {
+    grid-area: Sex;
+}
+
+#city {
+    grid-area: City;
+}
+
+
+#password_register1 {
+    grid-area: Password;
+}
+
+#password_register2 {
+    grid-area: Repeat_password;
+}
+
+#agreed1 {
+    grid-area: Agreed;
+}
+
+#send_button {
+    grid-area: Register_button;
+    width: 300px;
+    height: 50px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 0px;
+    background-color: rgb(0, 192, 128);
+}
+
+@media screen and (max-width: 540px) {
+    #send_button {
+        width: 60vw;
+    }
+}
+
+address {
+    justify-self: start;
+}
+
