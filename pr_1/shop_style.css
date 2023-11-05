@@ -23,7 +23,7 @@ body > h2 {
 
 
 
-.all_products {
+#all_products {
     grid-area: Products;
     display: grid;
     justify-self: center;
@@ -37,21 +37,21 @@ body > h2 {
 }
 
 @media screen and (max-width: 1200px) {
-    .all_products {
+    #all_products {
         grid-template-columns: repeat(3, 200px);
         grid-template-rows: repeat(4, 300px);
     }
 }
 
 @media screen and (max-width: 860px) {
-    .all_products {
+    #all_products {
         grid-template-columns: repeat(2, 200px);
         grid-template-rows: repeat(6, 300px);
     }
 }
 
 @media screen and (max-width: 600px) {
-    .all_products {
+    #all_products {
         grid-template-columns: repeat(1, 200px);
         grid-template-rows: repeat(12, 300px);
     }
@@ -81,12 +81,37 @@ body > h2 {
     justify-items: center;
     align-items: center;
     overflow: hidden;
-    
+
+    & .favourite {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.7rem;
+
+        background: none;
+        border: none;
+    }
+
+
+    & .product_description {
+        margin: 0;
+        position: absolute;
+        display: block;
+        bottom: 0;
+        opacity: 0;
+    }
     
     
 }
 
 .cpu:hover {
+
+    & .product_description {
+        animation: 0.5s show_description ease-in forwards;
+    }
     
 
     &::before {
@@ -110,17 +135,6 @@ body > h2 {
     }
 }
 
-.cpu div {
-    margin: 0;
-    position: absolute;
-    display: block;
-    bottom: 0;
-    opacity: 0;
-}
-
-.cpu:hover div {
-    animation: 0.5s show_description ease-in forwards;
-}
 
 @keyframes show_description {
     to {
