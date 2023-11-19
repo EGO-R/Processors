@@ -204,15 +204,19 @@ if (devs) {
 
 
 
-function truncate(str, maxlength) {
-    if (str.length > maxlength)
-        return (str.slice(0, maxlength - 3) + "...");
-
-    return str;
+var products = [];
+for (let obj in document.getElementsByClassName("cpu")) {
+    products.push(obj);
 }
 
-var descriptions = document.getElementsByClassName("trunc");
+function show_cart() {
+    console.log("click");
+    let card_content = document.getElementById("cart-content");
 
-for (let i = 0; i < descriptions.length; i++) {
-    descriptions[i].innerHTML = truncate(descriptions[i].innerHTML, 4)
+    if (card_content.style.display === "none")
+        card_content.style.display = "block";
+    else
+        card_content.style.display = "none";
 }
+
+document.getElementById("cart-img").addEventListener('click', show_cart);

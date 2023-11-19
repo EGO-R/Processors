@@ -16,11 +16,42 @@ body {
         "Footer";
 }
 
-body > h2 {
+.shop_header {
     grid-area: Header;
-    margin-left: 30px;
+    position: relative;
+    margin: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > #cart {
+        position: relative;
+        & > img {
+            height: 2rem;
+        }
+    }
+
 }
 
+#cart-content {
+    position: absolute;
+    background-color: antiquewhite;
+    width: 10px;
+    height: 10px;
+}
+
+
+.cart-element {
+    display: block;
+    height: 3rem;
+    width: 70vw;
+    background-color: aquamarine;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: burlywood;
+    }
+}
 
 
 #all_products {
