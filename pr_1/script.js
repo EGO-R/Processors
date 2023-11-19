@@ -214,5 +214,5 @@ function truncate(str, maxlength) {
 var descriptions = document.getElementsByClassName("trunc");
 
 for (let i = 0; i < descriptions.length; i++) {
-    descriptions[i].innerHTML = truncate(descriptions[i].innerHTML, 3)
+    descriptions[i].innerHTML = truncate(descriptions[i].innerHTML, 4)
 }
