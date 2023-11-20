@@ -202,9 +202,29 @@ if (submit_button) {
 //     bin_button.addEventListener('click', bin.read);
 // }
 
+function filter() {
+    let value_from = Number(document.getElementById("filter_from").value);
+    let value_to = Number(document.getElementById("filter_to").value);
+
+    if (!(value_from === String(Number(value_from))) && !(value_to === String(Number(value_to))) )
+        return;
+    let result = content.filter(item => {
+        if (item.price * item.amount >= )
+    })
+}
+
+
+document.getElementById("filter_from").addEventListener('input', event => {console.log("\"" + event.target.value + "\"")});
+
+function recount_cart_summary(arr) {
+    let sum = 0;
+    for (let obj of arr) 
+        sum += obj.amount * obj.price;
+    
+    document.getElementById("cart_summary").innerHTML = "Итог: " + String(sum);
+}
 
 function show_cart() {
-    console.log("click");
     let card_content = document.getElementById("cart-content");
 
     if (card_content.style.display === "none")
@@ -213,82 +233,118 @@ function show_cart() {
         card_content.style.display = "none";
 }
 
+function Cart_obj(obj) {
+    this.parent_obj = obj;
+    this.cart_element = create_element(obj);
+    this.price = Number(obj.getElementsByClassName("price")[0].innerHTML);
+    this.amount = 1;
+
+    
+
+    this.decrease = () => {
+        if (this.amount > 1) {
+            this.amount--;
+            this.cart_element.getElementsByClassName("cart-amount")[0].innerHTML = String(this.amount);
+            this.cart_element.getElementsByClassName("cart-price")[0].innerHTML = String(this.amount * this.price);
+            recount_cart_summary(content);
+        }
+        
+    }
+    
+    this.increase = () => {
+        this.amount++;
+        this.cart_element.getElementsByClassName("cart-amount")[0].innerHTML = String(this.amount);
+        this.cart_element.getElementsByClassName("cart-price")[0].innerHTML = String(this.amount * this.price);
+        recount_cart_summary(content);
+    }
+}
 
 
-var cart_content = [];
-var cpu_liked = [];
+var content = [];
+
 
 function create_element(obj) {
-    console.log("create element");
-    console.log(obj);
     let new_obj = document.createElement("div");
     let new_name = document.createElement("p");
     let new_price = document.createElement("p");
     let new_bin = document.createElement("img");
+    let new_subtract = document.createElement("button");
+    let new_amount = document.createElement("p");
+    let new_add = document.createElement("button");
 
     new_obj.appendChild(new_name);
     new_obj.appendChild(new_price);
     new_obj.appendChild(new_bin);
+    new_obj.appendChild(new_subtract);
+    new_obj.appendChild(new_amount);
+    new_obj.appendChild(new_add);
 
     new_obj.classList.add("cart-element");
     new_name.classList.add("cart-product");
     new_price.classList.add("cart-price");
     new_bin.classList.add("cart-delete");
+    new_subtract.classList.add("cart-subtract");
+    new_amount.classList.add("cart-amount");
+    new_add.classList.add("cart-add");
     
     new_name.innerHTML = obj.getElementsByClassName("product_name")[0].innerHTML;
     new_price.innerHTML = obj.getElementsByClassName("price")[0].innerHTML;
     new_bin.src = "Images/bin.png";
     new_bin.addEventListener('click', element => {
-        let index = cart_content.indexOf(element.target.parentNode);
-        console.log(element.target);
-        console.log(index);
+        let index = -1;
+
+        for (let i = 0; i < content.length; i++) {
+            if (content[i].cart_element === element.target.parentNode)
+                index = i;
+        }
+        
         ifDislike = true;
-        cpu_liked[index].getElementsByClassName("favourite")[0].click();
+        content[index].parent_obj.getElementsByClassName("favourite")[0].click();
     });
+    new_subtract.innerHTML = "-";
+    new_amount.innerHTML = "1";
+    new_add.innerHTML = "+";
+    
 
     return new_obj;
 
 }
 
-function render_cart() {
-    console.log("render" + cart_content);
-    console.log(cpu_liked);
+function render_cart(arr) {
     let parent = document.getElementById("cart-content");
     let old_content = Array.from(parent.getElementsByClassName("cart-element"));
-
-    console.log("elements found: " + old_content.length);
-    let counter = 0;
+    
     for (let obj of old_content) {
-        counter++;
         parent.removeChild(obj);
     }
-    console.log("deleted: " + counter);
 
-    for (let obj of cart_content) {
-        parent.appendChild(obj);
+    for (let obj of arr) {
+        parent.insertBefore(obj.cart_element, parent.getElementsByClassName("cart_footer")[0]);
     }
+    recount_cart_summary(content);
 }
 
 function add_to_cart() {
-    console.log("add to cart");
     let like = this.getElementsByClassName("favourite")[0];
     if (ifLike) {
-        cart_content.push(create_element(this));
-        cpu_liked.push(this);
-        render_cart();
+        let cart_obj = new Cart_obj(this);
+        cart_obj.cart_element.getElementsByClassName("cart-subtract")[0].addEventListener('click', cart_obj.decrease);
+        cart_obj.cart_element.getElementsByClassName("cart-add")[0].addEventListener('click', cart_obj.increase);
+        content.push(cart_obj);
+        render_cart(content);
         ifLike = false;
     }
 
     else if(ifDislike) {
-        let index = cpu_liked.indexOf(this);
-        if (index !== -1) {
-            console.log("found");
-            cart_content.splice(index, 1);
-            cpu_liked.splice(index, 1);
-            render_cart();
+        let index = -1;
+        for (let i = 0; i < content.length; i++) {
+            if (content[i].parent_obj === this)
+                index = i;
         }
-        else 
-            console.log("not found");
+        
+        content.splice(index, 1);
+        render_cart(content);
+        
         
         ifDislike = false;
     }

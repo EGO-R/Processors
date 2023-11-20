@@ -43,19 +43,68 @@ body {
     width: 70vw;
     height: auto;
     border-radius: 10px;
-    & > h2 {
+    & > .cart_head {
         margin-left: 15px;
+        display: grid;
+        grid-template-columns: auto 100px 3rem;
+        grid-template-areas: "Header Filter Sort";
+        align-items: center;
+
+        & > h2 {
+            grid-area: Header;
+            margin: 0;
+        }
+
+        & > #filter_number {
+            grid-area: Filter;
+            height: 3rem;
+            width: 75%;
+            justify-self: center;
+
+            & > input {
+                width: 100%;
+            }
+        }
+
+        & > #sort_button {
+            grid-area: Sort;
+            justify-self: center;
+            height: 2rem;
+            width: 2rem;
+        }
+
+    }
+
+    & > .cart_footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "Counter Clear Buy";
+        align-items: center;
+        justify-items: center;
+
+        & > #cart_summary {
+            grid-area: Counter;
+        }
+
+        & > #clear_cart_button {
+            grid-area: Clear;
+        }
+         & >#buy_cart_button {
+             grid-area: Buy;
+         }
     }
 }
 
 
 .cart-element {
     display: grid;
-    grid-template-columns: auto 100px 100px;
-    grid-template-areas: "Product Price Delete";
+    grid-template-columns: auto 50px 50px 50px;
+    grid-template-rows: 2rem 2rem;
+    grid-template-areas: "Product Price Price Delete"
+"Empty Subtract Amount Add";
     align-items: center;
     margin: 10px 0;
-    height: 3rem;
+    height: auto;
     box-sizing: border-box;
     background-color: aquamarine;
     border-radius: 10px;
@@ -80,6 +129,35 @@ body {
         justify-self: center;
         height: 2rem;
         cursor: pointer;
+    }
+
+    & .cart-subtract {
+        grid-area: Subtract;
+        justify-self: center;
+        border-radius: 50%;
+        border: 0;
+        background: white;
+        cursor: pointer;
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1rem;
+    }
+
+    & .cart-amount {
+        grid-area: Amount;
+        justify-self: center;
+    }
+
+    & .cart-add {
+        grid-area: Add;
+        justify-self: center;
+        border-radius: 50%;
+        border: 0;
+        background: white;
+        cursor: pointer;
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1rem;
     }
 }
 

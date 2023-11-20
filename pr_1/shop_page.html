@@ -90,7 +90,21 @@
         <div id="cart">
             <img id="cart-img" src="Images/basket.png">
             <div id="cart-content" style="display: none">
-                <h2>Корзина</h2>
+                <div class="cart_head">
+                    <h2>Корзина</h2>
+                    <div id="filter_number">
+                        <input type="text" id="filter_from" placeholder="От">
+                        <input type="text" id="filter_to" placeholder="До">
+                    </div>
+
+                    <button id="sort_button">Отсортировать</button>
+                </div>
+
+                <div class="cart_footer">
+                    <p id="cart_summary">Итог: 0</p>
+                    <button id="clear_cart_button">Очистить</button>
+                    <button id="buy_cart_button">Купить</button>
+                </div>
 
             </div>
         </div>
