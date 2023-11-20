@@ -49,15 +49,16 @@
 //     console.log("Не регистрируемся");
 // }
 
+var ifLike = false;
+var ifDislike = false;
 function like_button(element) {
-    console.log(element.style.color);
     if (element.style.color === 'white') {
-        likes_amount++;
         element.style.color = 'red';
+        ifLike = true;
     }
     else {
-        likes_amount--;
         element.style.color = 'white';
+        ifDislike = true;
     }
 }
 
@@ -89,7 +90,6 @@ for (let i = 0; i < buttons.length; i++) {
 //
 // }
 
-var likes_amount = 0;
 
 var submit_button = document.getElementById("send_button");
 
@@ -203,12 +203,6 @@ if (submit_button) {
 // }
 
 
-
-var products = [];
-for (let obj in document.getElementsByClassName("cpu")) {
-    products.push(obj);
-}
-
 function show_cart() {
     console.log("click");
     let card_content = document.getElementById("cart-content");
@@ -219,18 +213,84 @@ function show_cart() {
         card_content.style.display = "none";
 }
 
-var liked_products = [];
+
+
+var cart_content = [];
+var cpu_liked = [];
+
+function create_element(obj) {
+    console.log("create element");
+    console.log(obj);
+    let new_obj = document.createElement("div");
+    let new_name = document.createElement("p");
+    let new_price = document.createElement("p");
+    let new_bin = document.createElement("img");
+
+    new_obj.appendChild(new_name);
+    new_obj.appendChild(new_price);
+    new_obj.appendChild(new_bin);
+
+    new_obj.classList.add("cart-element");
+    new_name.classList.add("cart-product");
+    new_price.classList.add("cart-price");
+    new_bin.classList.add("cart-delete");
+    
+    new_name.innerHTML = obj.getElementsByClassName("product_name")[0].innerHTML;
+    new_price.innerHTML = obj.getElementsByClassName("price")[0].innerHTML;
+    new_bin.src = "Images/bin.png";
+    new_bin.addEventListener('click', element => {
+        let index = cart_content.indexOf(element.target.parentNode);
+        console.log(element.target);
+        console.log(index);
+        ifDislike = true;
+        cpu_liked[index].getElementsByClassName("favourite")[0].click();
+    });
+
+    return new_obj;
+
+}
+
+function render_cart() {
+    console.log("render" + cart_content);
+    console.log(cpu_liked);
+    let parent = document.getElementById("cart-content");
+    let old_content = Array.from(parent.getElementsByClassName("cart-element"));
+
+    console.log("elements found: " + old_content.length);
+    let counter = 0;
+    for (let obj of old_content) {
+        counter++;
+        parent.removeChild(obj);
+    }
+    console.log("deleted: " + counter);
+
+    for (let obj of cart_content) {
+        parent.appendChild(obj);
+    }
+}
 
 function add_to_cart() {
+    console.log("add to cart");
     let like = this.getElementsByClassName("favourite")[0];
-    if (like.style.color !== 'red' && liked_products.includes(this)) {
-        liked_products = liked_products.filter(this);
-        return;
+    if (ifLike) {
+        cart_content.push(create_element(this));
+        cpu_liked.push(this);
+        render_cart();
+        ifLike = false;
     }
 
-    else if(like.style.color === 'red' && !(liked_products.includes(this))) {
-        liked_products.push(this);
+    else if(ifDislike) {
+        let index = cpu_liked.indexOf(this);
+        if (index !== -1) {
+            console.log("found");
+            cart_content.splice(index, 1);
+            cpu_liked.splice(index, 1);
+            render_cart();
+        }
+        else 
+            console.log("not found");
         
+        ifDislike = false;
     }
         
     
@@ -242,7 +302,9 @@ var cart = document.getElementById("cart-content");
 var products = document.getElementsByClassName("cpu");
 
 if (products) {
-    for (let obj in products)
+    for (let obj of products) {
+        obj.addEventListener('click', add_to_cart);
+    }
 
 }
 

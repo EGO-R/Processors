@@ -40,7 +40,7 @@ body {
     position: absolute;
     background-color: rgb(176, 0, 199);
     left: -70vw;
-    width: auto;
+    width: 70vw;
     height: auto;
     border-radius: 10px;
     & > h2 {
@@ -54,8 +54,9 @@ body {
     grid-template-columns: auto 100px 100px;
     grid-template-areas: "Product Price Delete";
     align-items: center;
+    margin: 10px 0;
     height: 3rem;
-    width: 70vw;
+    box-sizing: border-box;
     background-color: aquamarine;
     border-radius: 10px;
     padding-left: 10px;
@@ -78,8 +79,6 @@ body {
         grid-area: Delete;
         justify-self: center;
         height: 2rem;
-        width: 2rem;
-        background-color: red;
         cursor: pointer;
     }
 }
@@ -152,6 +151,7 @@ body {
         width: 50px;
         height: 50px;
         font-size: 1.7rem;
+        cursor: pointer;
 
         background: none;
         border: none;
