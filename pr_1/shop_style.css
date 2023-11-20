@@ -71,6 +71,10 @@ body {
             justify-self: center;
             height: 2rem;
             width: 2rem;
+
+            & > img {
+                height: 1.5rem;
+            }
         }
 
     }

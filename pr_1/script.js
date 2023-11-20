@@ -202,17 +202,37 @@ if (submit_button) {
 //     bin_button.addEventListener('click', bin.read);
 // }
 
+function sort_cart_content() {
+    content.sort((a, b) => {
+        let a_price = a.price * a.amount;
+        let b_price = b.price * b.amount;
+        if (a_price > b_price) return 1;
+        if (a_price === b_price) return 0;
+        return -1;
+    });
+    
+    render_cart();
+}
+
+function clear_cart() {
+    while (content.length > 0)
+        content[0].cart_element.getElementsByClassName("cart-delete")[0].click();
+    render_cart();
+}
+
+document.getElementById("clear_cart_button").addEventListener('click', clear_cart);
+
+document.getElementById("sort_button").addEventListener('click', sort_cart_content);
+
 function filter() {
-    console.log("filtering");
     let value_from = document.getElementById("filter_from").value;
     let value_to = document.getElementById("filter_to").value;
-
-    if (!(value_from === String(Number(value_from))) && !(value_to === String(Number(value_to))) )
-        return;
+    
     let result = content.filter(item => {
         let price = item.price * item.amount;
         let ifValue_from = (value_from === String(Number(value_from)));
         let ifValue_to = (value_to === String(Number(value_to)));
+        
 
         return (ifValue_from && price >= Number(value_from) || !ifValue_from) && 
         (ifValue_to && price <= Number(value_to) || !ifValue_to);
@@ -258,6 +278,7 @@ function Cart_obj(obj) {
             this.cart_element.getElementsByClassName("cart-amount")[0].innerHTML = String(this.amount);
             this.cart_element.getElementsByClassName("cart-price")[0].innerHTML = String(this.amount * this.price);
             recount_cart_summary();
+            render_cart();
         }
         
     }
@@ -267,6 +288,7 @@ function Cart_obj(obj) {
         this.cart_element.getElementsByClassName("cart-amount")[0].innerHTML = String(this.amount);
         this.cart_element.getElementsByClassName("cart-price")[0].innerHTML = String(this.amount * this.price);
         recount_cart_summary();
+        render_cart();
     }
 }
 
