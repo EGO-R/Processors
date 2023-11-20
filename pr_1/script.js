@@ -169,38 +169,38 @@ if (submit_button) {
 
 
 
-function Accumulator(startingValue) {
-    this.value = startingValue;
+// function Accumulator(startingValue) {
+//     this.value = startingValue;
 
-    this.read = () => {
-        let input = prompt('Сколько добавить?');
+//     this.read = () => {
+//         let input = prompt('Сколько добавить?');
 
-        if(input !== null && input !== '' && String(Number(input)) === input) {
-            this.value = Number(this.value) + Number(input);
-        }
-        else {
-            alert('Ошибка');
-        }
+//         if(input !== null && input !== '' && String(Number(input)) === input) {
+//             this.value = Number(this.value) + Number(input);
+//         }
+//         else {
+//             alert('Ошибка');
+//         }
 
-        alert(this.value);
-    };
+//         alert(this.value);
+//     };
 
-}
+// }
 
-let bin = new Accumulator(1);
+// let bin = new Accumulator(1);
 
 
-var devs = document.getElementsByClassName('Developers')[0];
+// var devs = document.getElementsByClassName('Developers')[0];
 
-if (devs) {
-    var bin_button = document.createElement("button");
+// if (devs) {
+//     var bin_button = document.createElement("button");
 
-    devs.appendChild(bin_button);
+//     devs.appendChild(bin_button);
 
-    bin_button.innerHTML = "Добавить в корзину";
-    bin_button.style.position = "absolute";
-    bin_button.addEventListener('click', bin.read);
-}
+//     bin_button.innerHTML = "Добавить в корзину";
+//     bin_button.style.position = "absolute";
+//     bin_button.addEventListener('click', bin.read);
+// }
 
 
 
@@ -219,4 +219,32 @@ function show_cart() {
         card_content.style.display = "none";
 }
 
+var liked_products = [];
+
+function add_to_cart() {
+    let like = this.getElementsByClassName("favourite")[0];
+    if (like.style.color !== 'red' && liked_products.includes(this)) {
+        liked_products = liked_products.filter(this);
+        return;
+    }
+
+    else if(like.style.color === 'red' && !(liked_products.includes(this))) {
+        liked_products.push(this);
+        
+    }
+        
+    
+}
 document.getElementById("cart-img").addEventListener('click', show_cart);
+
+var cart = document.getElementById("cart-content");
+
+var products = document.getElementsByClassName("cpu");
+
+if (products) {
+    for (let obj in products)
+
+}
+
+
+

@@ -26,7 +26,10 @@ body {
 
     & > #cart {
         position: relative;
+        z-index: 10;
+        color: black;
         & > img {
+            cursor: pointer;
             height: 2rem;
         }
     }
@@ -35,21 +38,49 @@ body {
 
 #cart-content {
     position: absolute;
-    background-color: antiquewhite;
-    width: 10px;
-    height: 10px;
+    background-color: rgb(176, 0, 199);
+    left: -70vw;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    & > h2 {
+        margin-left: 15px;
+    }
 }
 
 
 .cart-element {
-    display: block;
+    display: grid;
+    grid-template-columns: auto 100px 100px;
+    grid-template-areas: "Product Price Delete";
+    align-items: center;
     height: 3rem;
     width: 70vw;
     background-color: aquamarine;
     border-radius: 10px;
+    padding-left: 10px;
 
     &:hover {
         background-color: burlywood;
+    }
+
+    & .cart-product {
+        grid-area: Product;
+        cursor: pointer;
+    }
+
+    & .cart-price {
+        grid-area: Price;
+        justify-self: center;
+    }
+
+    & .cart-delete {
+        grid-area: Delete;
+        justify-self: center;
+        height: 2rem;
+        width: 2rem;
+        background-color: red;
+        cursor: pointer;
     }
 }
 
