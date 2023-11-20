@@ -203,20 +203,31 @@ if (submit_button) {
 // }
 
 function filter() {
-    let value_from = Number(document.getElementById("filter_from").value);
-    let value_to = Number(document.getElementById("filter_to").value);
+    console.log("filtering");
+    let value_from = document.getElementById("filter_from").value;
+    let value_to = document.getElementById("filter_to").value;
 
     if (!(value_from === String(Number(value_from))) && !(value_to === String(Number(value_to))) )
         return;
     let result = content.filter(item => {
-        if (item.price * item.amount >= )
+        let price = item.price * item.amount;
+        let ifValue_from = (value_from === String(Number(value_from)));
+        let ifValue_to = (value_to === String(Number(value_to)));
+
+        return (ifValue_from && price >= Number(value_from) || !ifValue_from) && 
+        (ifValue_to && price <= Number(value_to) || !ifValue_to);
     })
+
+    return result;
 }
 
 
-document.getElementById("filter_from").addEventListener('input', event => {console.log("\"" + event.target.value + "\"")});
+document.getElementById("filter_from").addEventListener('input', render_cart);
+document.getElementById("filter_to").addEventListener('input', render_cart);
 
-function recount_cart_summary(arr) {
+
+function recount_cart_summary() {
+    let arr = filter();
     let sum = 0;
     for (let obj of arr) 
         sum += obj.amount * obj.price;
@@ -246,7 +257,7 @@ function Cart_obj(obj) {
             this.amount--;
             this.cart_element.getElementsByClassName("cart-amount")[0].innerHTML = String(this.amount);
             this.cart_element.getElementsByClassName("cart-price")[0].innerHTML = String(this.amount * this.price);
-            recount_cart_summary(content);
+            recount_cart_summary();
         }
         
     }
@@ -255,7 +266,7 @@ function Cart_obj(obj) {
         this.amount++;
         this.cart_element.getElementsByClassName("cart-amount")[0].innerHTML = String(this.amount);
         this.cart_element.getElementsByClassName("cart-price")[0].innerHTML = String(this.amount * this.price);
-        recount_cart_summary(content);
+        recount_cart_summary();
     }
 }
 
@@ -310,7 +321,8 @@ function create_element(obj) {
 
 }
 
-function render_cart(arr) {
+function render_cart() {
+    let arr = filter();
     let parent = document.getElementById("cart-content");
     let old_content = Array.from(parent.getElementsByClassName("cart-element"));
     
@@ -321,7 +333,7 @@ function render_cart(arr) {
     for (let obj of arr) {
         parent.insertBefore(obj.cart_element, parent.getElementsByClassName("cart_footer")[0]);
     }
-    recount_cart_summary(content);
+    recount_cart_summary();
 }
 
 function add_to_cart() {
@@ -331,7 +343,7 @@ function add_to_cart() {
         cart_obj.cart_element.getElementsByClassName("cart-subtract")[0].addEventListener('click', cart_obj.decrease);
         cart_obj.cart_element.getElementsByClassName("cart-add")[0].addEventListener('click', cart_obj.increase);
         content.push(cart_obj);
-        render_cart(content);
+        render_cart();
         ifLike = false;
     }
 
@@ -343,7 +355,7 @@ function add_to_cart() {
         }
         
         content.splice(index, 1);
-        render_cart(content);
+        render_cart();
         
         
         ifDislike = false;
