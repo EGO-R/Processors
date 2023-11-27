@@ -220,9 +220,9 @@ function clear_cart() {
     render_cart();
 }
 
-document.getElementById("clear_cart_button").addEventListener('click', clear_cart);
+document.getElementById("clear_cart_button")?.addEventListener('click', clear_cart);
 
-document.getElementById("sort_button").addEventListener('click', sort_cart_content);
+document.getElementById("sort_button")?.addEventListener('click', sort_cart_content);
 
 function filter() {
     let value_from = document.getElementById("filter_from").value;
@@ -242,8 +242,8 @@ function filter() {
 }
 
 
-document.getElementById("filter_from").addEventListener('input', render_cart);
-document.getElementById("filter_to").addEventListener('input', render_cart);
+document.getElementById("filter_from")?.addEventListener('input', render_cart);
+document.getElementById("filter_to")?.addEventListener('input', render_cart);
 
 
 function recount_cart_summary() {
@@ -385,7 +385,7 @@ function add_to_cart() {
         
     
 }
-document.getElementById("cart-img").addEventListener('click', show_cart);
+document.getElementById("cart-img")?.addEventListener('click', show_cart);
 
 var cart = document.getElementById("cart-content");
 
@@ -398,5 +398,36 @@ if (products) {
 
 }
 
+
+function createNotification(element, counter, more_notifications_button) {
+    console.log("notifiying");
+    counter++;
+    let notification = document.createElement("div");
+    let arrow = document.createElement("img");
+    let content = document.createElement("p");
+
+    notification.appendChild(arrow);
+    notification.appendChild(content);
+
+    arrow.src = "Images/arrow.png";
+    arrow.width = "43px";
+    arrow.height = "14px";
+    arrow.classList.add("notification_img");
+    
+    content.innerHTML = "Уведомление " + counter;
+
+    element.insertBefore(notification, more_notifications_button);
+}
+
+var notification_counter = 0;
+
+var notification_list = document.getElementById("notifications-list");
+
+if (notification_list) {
+    let more_notifications_button = notification_list.lastElementChild;
+
+    let notification_interval = setInterval(createNotification, 3000, notification_list, notification_counter, more_notifications_button);
+
+}
 
 

@@ -117,9 +117,6 @@ p b {
     .notifications {
         grid-area: Notifications;
         cursor: pointer;
-        & > p {
-
-        }
     }
 
 
@@ -135,16 +132,18 @@ p b {
         }
 
 
-        .notifications-list {
+        #notifications-list {
+            overflow: scroll;
             position: absolute;
             width: inherit;
+            height: 550px;
             display: flex;
             flex-direction: column;
             visibility: hidden;
             background-color: rgb(41, 41, 42);
         }
 
-        .notifications:hover > .notifications-list {
+        .notifications:hover > #notifications-list {
             animation-name: show-content;
             animation-duration: 0.3s;
             animation-fill-mode: forwards;
@@ -154,7 +153,7 @@ p b {
 
 
 
-        .notifications-list > div {
+        #notifications-list > div {
             position: relative;
             width: 100%;
             padding: 0.5rem 0;
@@ -164,7 +163,7 @@ p b {
 
         }
 
-        .notifications-list > div:hover::before {
+        #notifications-list > div:hover::before {
             content: '';
             position: absolute;
             width: 100%;
@@ -186,11 +185,11 @@ p b {
             animation: 0.5s appear ease-in-out forwards;
         }
 
-        .notifications-list div p {
+        #notifications-list div p {
             display: inline-block;
         }
 
-        .notifications-list > p {
+        #notifications-list > p {
             cursor: pointer;
             text-align: center;
             display: block;
@@ -202,7 +201,7 @@ p b {
 
         }
 
-        .notifications-list > p:hover {
+        #notifications-list > p:hover {
             animation: 0.5s more ease-in-out forwards;
         }
 
