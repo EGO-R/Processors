@@ -398,11 +398,23 @@ if (products) {
 
 }
 
+function showNotification(options) {
+    let new_notification = document.createElement("div");
+    document.body.appendChild(new_notification);
 
-function createNotification(element, counter, more_notifications_button) {
-    console.log("notifiying");
-    counter++;
-    let notification = document.createElement("div");
+    let new_notification_content = document.createElement("p");
+    new_notification.appendChild(new_notification_content);
+
+    new_notification.classList.add("notification");
+    new_notification_content.textContent = options;
+
+    setTimeout(() => {document.body.removeChild(new_notification)}, 1500);
+}
+
+
+function createNotification(str) {
+    notification_counter++;
+    let notification = document.createElement("li");
     let arrow = document.createElement("img");
     let content = document.createElement("p");
 
@@ -410,13 +422,19 @@ function createNotification(element, counter, more_notifications_button) {
     notification.appendChild(content);
 
     arrow.src = "Images/arrow.png";
-    arrow.width = "43px";
-    arrow.height = "14px";
+    arrow.width = 43;
+    arrow.height = 14;
     arrow.classList.add("notification_img");
     
-    content.innerHTML = "Уведомление " + counter;
+    content.textContent = str;
 
-    element.insertBefore(notification, more_notifications_button);
+    notification_list.appendChild(notification);
+    
+    notification.addEventListener('click', () => {showNotification(str)});
+}
+
+function default_notification() {
+    createNotification("Уведомление " + notification_counter);
 }
 
 var notification_counter = 0;
@@ -424,9 +442,32 @@ var notification_counter = 0;
 var notification_list = document.getElementById("notifications-list");
 
 if (notification_list) {
-    let more_notifications_button = notification_list.lastElementChild;
 
-    let notification_interval = setInterval(createNotification, 3000, notification_list, notification_counter, more_notifications_button);
+    let notification_interval = setInterval(default_notification, 3000);
+
+
+    let notification_button = document.getElementsByClassName("notifications-button")[0];
+    function pauseAndResumeInterval() {
+        alert("Задержка");
+
+        clearInterval(notification_interval);
+
+        setTimeout(() => {
+            notification_interval = setInterval(default_notification, 3000);
+        }, 10000);
+    }
+
+    notification_button.addEventListener('click', pauseAndResumeInterval);
+    
+    function input_notification() {
+        console.log("input");
+        let str = prompt("Введите уведомление");
+        createNotification(str);
+    }
+    
+    document.getElementById("notifications-window").lastElementChild.addEventListener('click', input_notification);
+    
+    
 
 }
 

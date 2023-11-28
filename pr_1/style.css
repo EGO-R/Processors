@@ -74,6 +74,24 @@ p b {
 
 
 
+.notification {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    width: 20vw;
+    height: 20vh;
+    background: chocolate;
+    top: 40vh;
+    left: 40vw;
+    border-radius: 20px;
+
+    & > p {
+        padding-left: 20px;
+    }
+}
+
+
 
 /* баннер */
 @media all {
@@ -132,28 +150,37 @@ p b {
         }
 
 
-        #notifications-list {
-            overflow: scroll;
+        #notifications-window {
+
             position: absolute;
             width: inherit;
             height: 550px;
             display: flex;
+            flex-shrink: 0;
             flex-direction: column;
             visibility: hidden;
             background-color: rgb(41, 41, 42);
         }
 
-        .notifications:hover > #notifications-list {
+
+
+        .notifications:hover > #notifications-window {
             animation-name: show-content;
             animation-duration: 0.3s;
             animation-fill-mode: forwards;
             animation-delay: 0.3s;
         }
 
+        #notifications-list {
+            height: 500px;
+            padding: 0;
+            overflow: scroll;
+        }
 
 
 
-        #notifications-list > div {
+
+        #notifications-list > li {
             position: relative;
             width: 100%;
             padding: 0.5rem 0;
@@ -163,7 +190,7 @@ p b {
 
         }
 
-        #notifications-list > div:hover::before {
+        #notifications-list > li:hover::before {
             content: '';
             position: absolute;
             width: 100%;
@@ -175,21 +202,22 @@ p b {
             animation: 0.5s notification_hover ease-in-out forwards;
         }
 
-        .notifications:hover div img {
+        .notifications:hover li img {
             display: inline-block;
             width: 0;
 
         }
 
-        .notifications:hover div:hover > img {
+        .notifications:hover li:hover > img {
             animation: 0.5s appear ease-in-out forwards;
         }
 
-        #notifications-list div p {
+        #notifications-list li p {
             display: inline-block;
+            padding-left: 10px;
         }
 
-        #notifications-list > p {
+        #notifications-list + p {
             cursor: pointer;
             text-align: center;
             display: block;
@@ -201,7 +229,7 @@ p b {
 
         }
 
-        #notifications-list > p:hover {
+        #notifications-list + p:hover {
             animation: 0.5s more ease-in-out forwards;
         }
 
@@ -215,8 +243,7 @@ p b {
             to {
                 width: 305px;
                 right: 0;
-                border-bottom-right-radius: 20px;
-                border-bottom-left-radius: 20px;
+                border-radius: 20px;
                 visibility: visible;
             }
         }

@@ -24,66 +24,61 @@
 
 
 <body>
-    <div class="banner">
+<div class="banner">
 
-        <div class="menu">
-            <input type="checkbox" name="hide_menu" id="hide_menu">
-            <label for="hide_menu">
-                <div class="fstripe"></div>
-                <div class="sstripe"></div>
-                <div class="tstripe"></div>
-            </label>
 
-            <ul class="navigate">
-                <li><a href="#Topic2">Что такое процессор?</a></li>
-                <li><a href="#Topic3">Ведущие производители</a>
-                    <ul class="submenu">
-                        <li><a href="#Topic4">Intel</a></li>
-                        <li><a href="#Topic5">Amd</a></li>
-                    </ul>
-                </li>
-                <li><a href="#Topic6">Как процессор устроен</a></li>
-                <li><a href="shop_page.html">Магазин</a></li>
+    <a href="main_page.html"><img src="Images/cpu-logo.png" class="logo" width="1167px" height="957px"></a>
+
+    <div class="notifications">
+        <p class="notifications-button">Уведомления</p>
+
+        <div id="notifications-window">
+            <ul id="notifications-list">
+
             </ul>
+
+            <p>Добавить</p>
         </div>
 
 
-        <!-- Главный заголовок -->
-        <a href="main_page.html"><img src="Images/cpu-logo.png" class="logo" width="1167px" height="957px"></a>
-
-
-
-
-        
-             
-
-        <div class="login">
-            <input type="checkbox" name="logging_in" id="logging_in" required>
-            <label for="logging_in"><img src="Images\login_img.png" width="50px" class="login_img"></label>
-            
-
-            <div class="forms">
-
-
-                <h2>Вход</h2>
-
-                <form action="" method="post" class="sign_in_form">
-                    <input type="text" name="mail_login" id="mail_login" required placeholder="Логин">
-
-    
-                    <input type="password" name="password_login" id="password_login" required placeholder="Пароль">
-
-                    <p>Нет аккаунта? <a href="registration.html">Зарегистрироваться</a></p>
-
-                    <button type="submit">Войти</button>
-                </form>
-
-            </div>
-
-            
-        </div>
-        
     </div>
+
+    <a href="shop_page.html" class="shop-button"><p>Магазин</p> </a>
+
+
+
+
+
+
+
+
+    <div class="login">
+        <input type="checkbox" name="logging_in" id="logging_in" required>
+        <label for="logging_in"><img src="Images\login_img.png" width="50px" class="login_img"></label>
+
+
+        <div class="forms">
+
+
+            <h2>Вход</h2>
+
+            <form action="" method="post" class="sign_in_form">
+                <input type="text" name="mail_login" id="mail_login" required placeholder="Логин">
+
+
+                <input type="password" name="password_login" id="password_login" required placeholder="Пароль">
+
+                <p>Нет аккаунта? <a href="registration.html">Зарегистрироваться</a></p>
+
+                <button type="submit">Войти</button>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
 
     <div class="shop_header">
         <h2>Товары</h2>
