@@ -417,16 +417,22 @@ function createNotification(str) {
     let notification = document.createElement("li");
     let arrow = document.createElement("img");
     let content = document.createElement("p");
+    let delete_button = document.createElement("img");
 
     notification.appendChild(arrow);
     notification.appendChild(content);
+    notification.appendChild(delete_button);
 
+    notification.classList.add("notification_element");
     arrow.src = "Images/arrow.png";
     arrow.width = 43;
     arrow.height = 14;
     arrow.classList.add("notification_img");
     
     content.textContent = str;
+
+    delete_button.src = "Images/bin.png";
+    delete_button.classList.add("notification_delete_button");
 
     notification_list.appendChild(notification);
     
@@ -469,6 +475,107 @@ if (notification_list) {
     
     
 
+}
+
+
+var how_it_works_img = document.getElementById("cpu_img");
+
+if (how_it_works_img) {
+    let wide = how_it_works_img.width / 2
+    let tall = how_it_works_img.height / 2;
+
+    how_it_works_img.style.position = "relative";
+    how_it_works_img.style.top = "50%";
+    how_it_works_img.style.left = "50%";
+    how_it_works_img.style.margin = "50%";
+    how_it_works_img.style.marginTop = "-" + tall + "px";
+    how_it_works_img.style.marginLeft = "-" + wide + "px";
+
+    how_it_works_img.addEventListener('click', (event) => {
+        let x = event.clientX;
+        let y = event.clientY;
+        alert('Координаты клика: ' + x + ', ' + y);
+    })
+}
+
+if (notification_list) {
+    notification_list.addEventListener('click', (event) => {
+        if (event.target.classList.contains("notification_delete_button")) {
+            notification_list.removeChild(event.target.parentNode);
+        }
+    })
+}
+
+
+if (products) {
+    // document.body.addEventListener('scroll', () => {
+    //     let scrollPosition = document.body.scrollY;
+    //     document.body.style.backgroundPosition = 'center ' + (scrollPosition * 2) + 'px';
+    // })
+
+    window.addEventListener('scroll', () => {
+        let scrollPosition = window.scrollY;
+        document.body.style.backgroundPosition = 'center ' + (scrollPosition * 0.3) + 'px';
+    });
+}
+
+
+function createProductElement(price_value) {
+    let section = document.createElement('section');
+    let button = document.createElement('button');
+    let img = document.createElement('img');
+    let div = document.createElement('div');
+    let name = document.createElement('p');
+    let price = document.createElement('p');
+
+    section.className = 'cpu';
+
+    button.className = 'favourite';
+    button.setAttribute('onclick', 'like_button(this)');
+    button.innerText = '❤';
+
+    img.className = 'product_img';
+    img.setAttribute('src', 'Products/amd.png');
+    img.setAttribute('height', '100');
+
+    div.className = 'product_description';
+
+    name.className = 'product_name';
+    name.innerText = 'amd';
+
+    price.className = 'price';
+    price.innerText = price_value;
+
+    div.appendChild(name);
+    div.appendChild(price);
+    section.appendChild(button);
+    section.appendChild(img);
+    section.appendChild(div);
+
+    return section;
+}
+
+if (products) {
+    let shop_inventory = document.getElementById("all_products");
+
+    window.addEventListener('scroll', function() {
+        let scrollPosition = window.scrollY;
+        let windowSize = window.innerHeight;
+        let bodyHeight = document.documentElement.scrollHeight;
+
+        if(Math.ceil(windowSize + scrollPosition) >= bodyHeight) {
+            for (let i = 0; i < 12; i++)
+                shop_inventory.appendChild(createProductElement(String(Math.floor(Math.random() * 30000))));
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].style.color = 'white';
+            }
+            for (let obj of products) {
+                obj.addEventListener('click', add_to_cart);
+            }
+
+        }
+    });
 }
 
 

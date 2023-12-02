@@ -74,22 +74,22 @@ p b {
 
 
 
-.notification {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    z-index: 100;
-    width: 20vw;
-    height: 20vh;
-    background: chocolate;
-    top: 40vh;
-    left: 40vw;
-    border-radius: 20px;
+/*.notification {*/
+/*    position: fixed;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    z-index: 100;*/
+/*    width: 20vw;*/
+/*    height: 20vh;*/
+/*    background: chocolate;*/
+/*    top: 40vh;*/
+/*    left: 40vw;*/
+/*    border-radius: 20px;*/
 
-    & > p {
-        padding-left: 20px;
-    }
-}
+/*    & > p {*/
+/*        padding-left: 20px;*/
+/*    }*/
+/*}*/
 
 
 
@@ -188,6 +188,14 @@ p b {
             overflow: hidden;
             z-index: 1;
 
+            & > .notification_delete_button {
+                position: absolute;
+                right: 10px;
+                top: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
         }
 
         #notifications-list > li:hover::before {
@@ -202,13 +210,13 @@ p b {
             animation: 0.5s notification_hover ease-in-out forwards;
         }
 
-        .notifications:hover li img {
+        .notifications:hover li .notification_img {
             display: inline-block;
             width: 0;
 
         }
 
-        .notifications:hover li:hover > img {
+        .notifications:hover li:hover > .notification_img {
             animation: 0.5s appear ease-in-out forwards;
         }
 
@@ -237,11 +245,11 @@ p b {
 
         @keyframes show-content {
             from {
-                width: 305px;
+                width: 400px;
                 right: 0;
             }
             to {
-                width: 305px;
+                width: 400px;
                 right: 0;
                 border-radius: 20px;
                 visibility: visible;
@@ -749,8 +757,23 @@ p b {
 
 .how_it_works {
     grid-area: How_it_works;
+    position: relative;
     align-self: center;
+    justify-self: center;
     margin: 0 3rem;
+    width: 90%;
+    overflow: hidden;
+
+    & > div {
+        position: relative;
+        width: 99%;
+        height: 830px;
+        border: solid red 1px;
+
+        & > img {
+            border: solid green 1px;
+        }
+    }
 }
 
 
