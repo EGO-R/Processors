@@ -55,10 +55,9 @@ body {
 
 
 /* нет таких */
-/* h1 {
-    padding: 0% 10%;
-    font-size: 350%;
-} */
+h1 {
+    font-size: 3.5rem;
+}
 
 h2 {
     font-size: 2rem;

@@ -507,12 +507,7 @@ if (notification_list) {
 }
 
 
-if (products) {
-    // document.body.addEventListener('scroll', () => {
-    //     let scrollPosition = document.body.scrollY;
-    //     document.body.style.backgroundPosition = 'center ' + (scrollPosition * 2) + 'px';
-    // })
-
+if (products.length) {
     window.addEventListener('scroll', () => {
         let scrollPosition = window.scrollY;
         document.body.style.backgroundPosition = 'center ' + (scrollPosition * 0.3) + 'px';
@@ -555,7 +550,7 @@ function createProductElement(price_value) {
     return section;
 }
 
-if (products) {
+if (products.length) {
     let shop_inventory = document.getElementById("all_products");
 
     window.addEventListener('scroll', function() {
