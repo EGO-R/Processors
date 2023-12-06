@@ -479,17 +479,20 @@ if (notification_list) {
 
 
 var how_it_works_img = document.getElementById("cpu_img");
+var how_it_works_parent = document.getElementById("image_parent");
+
 
 if (how_it_works_img) {
-    let wide = how_it_works_img.width / 2
-    let tall = how_it_works_img.height / 2;
+    let wide = how_it_works_img.width;
+    let tall = how_it_works_img.height;
 
+    let initialX = how_it_works_parent.clientWidth / 2 - wide / 2;
+    let initialY = how_it_works_parent.clientHeight / 2 - tall / 2;
+
+    how_it_works_img.style.left = initialX + "px";
+    how_it_works_img.style.top = initialY + "px";
     how_it_works_img.style.position = "relative";
-    how_it_works_img.style.top = "50%";
-    how_it_works_img.style.left = "50%";
-    how_it_works_img.style.margin = "50%";
-    how_it_works_img.style.marginTop = "-" + tall + "px";
-    how_it_works_img.style.marginLeft = "-" + wide + "px";
+
 
     how_it_works_img.addEventListener('click', (event) => {
         let x = event.clientX;
