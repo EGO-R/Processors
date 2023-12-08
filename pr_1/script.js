@@ -478,37 +478,6 @@ if (notification_list) {
 }
 
 
-var how_it_works_img = document.getElementById("cpu_img");
-var how_it_works_parent = document.getElementById("image_parent");
-
-
-if (how_it_works_img) {
-    let wide = how_it_works_img.width;
-    let tall = how_it_works_img.height;
-
-    let initialX = how_it_works_parent.clientWidth / 2 - wide / 2;
-    let initialY = how_it_works_parent.clientHeight / 2 - tall / 2;
-
-    how_it_works_img.style.left = initialX + "px";
-    how_it_works_img.style.top = initialY + "px";
-    how_it_works_img.style.position = "relative";
-
-
-    how_it_works_img.addEventListener('click', (event) => {
-        let x = event.clientX;
-        let y = event.clientY;
-        alert('Координаты клика: ' + x + ', ' + y);
-    })
-}
-
-if (notification_list) {
-    notification_list.addEventListener('click', (event) => {
-        if (event.target.classList.contains("notification_delete_button")) {
-            notification_list.removeChild(event.target.parentNode);
-        }
-    })
-}
-
 
 if (products.length) {
     window.addEventListener('scroll', () => {
@@ -576,4 +545,17 @@ if (products.length) {
     });
 }
 
+
+
+var pr_contents = document.getElementById("contents");
+
+if (pr_contents) {
+    pr_contents.addEventListener('click', function(event) {
+        if (event.target.tagName != 'A') return;
+    
+        let conf = confirm("Вы хотите покинуть страницу?");
+        if (!conf)
+        event.preventDefault();
+    });
+}
 
