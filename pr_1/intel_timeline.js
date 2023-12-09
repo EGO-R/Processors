@@ -13,14 +13,14 @@ function createIntelCpuElement(name, tech_process, cores_threads, speed, mem) {
 
     // Добавляем классы и атрибуты
     div.className = 'current-gen-cpu';
-    div.addEventListener('mouseover', () => {
+    div.addEventListener('focus', () => {
+        console.log("current");
+        console.log(intel_container.lastElementChild.offsetHeight);
+        intel_container.style.setProperty('--last-elem-height', intel_container.lastElementChild.offsetHeight + 'px');
         let characteristics = div.getElementsByClassName("current-gen-cpu-characteristics")[0];
         characteristics.style.display = "block";
-    });
-    div.addEventListener('mouseout', () => {
-        let characteristics = div.getElementsByClassName("current-gen-cpu-characteristics")[0];
-        characteristics.style.display = "none";
-    });
+    }, {capture: true});
+
 
     h3.className = 'current-gen-cpu-name';
     h3.innerText = 'Core i' + name;
@@ -143,4 +143,6 @@ var intel_container = document.getElementById("intel-timeline-container");
 
 intel_container.appendChild(createGeneration5Element(11));
 intel_container.appendChild(createGeneration5Element(10));
+
+
 

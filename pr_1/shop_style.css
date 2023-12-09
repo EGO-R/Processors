@@ -1,3 +1,7 @@
+@media screen and (min-width: 600px){
+
+}
+
 body {
     margin: 0;
     position: relative;
@@ -13,7 +17,7 @@ body {
 
     grid-template-rows: calc(var(--logo-height) + 5px) 100px auto 100px;
     grid-template-columns: 100%;
-    grid-template-areas: 
+    grid-template-areas:
         "Banner"
         "Header"
         "Products"
@@ -51,8 +55,6 @@ body {
     & > .cart_head {
         margin-left: 15px;
         display: grid;
-        grid-template-columns: auto 100px 3rem;
-        grid-template-areas: "Header Filter Sort";
         align-items: center;
 
         & > h2 {
@@ -101,6 +103,24 @@ body {
          & >#buy_cart_button {
              grid-area: Buy;
          }
+    }
+}
+
+@media screen and (min-width: 600px){
+    .cart_head {
+        grid-template-columns: auto 100px 3rem;
+        grid-template-areas: "Header Filter Sort";
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .cart_head {
+        grid-template-columns: auto;
+        grid-template-rows: auto 3rem 3rem;
+        grid-template-areas: "Header"
+        "Filter"
+        "Sort";
     }
 }
 
@@ -211,7 +231,6 @@ body {
     cursor: pointer;
     width: 200px;
     height: 300px;
-    margin: 0.5rem;
     position: relative;
     
     flex-grow: 0;
@@ -256,7 +275,7 @@ body {
     
 }
 
-.cpu:hover {
+.cpu:hover, .selected {
 
     & .product_description {
         animation: 0.5s show_description ease-in forwards;

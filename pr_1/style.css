@@ -27,7 +27,6 @@ html {
 
 body {
     margin: 0;
-    position: relative;
     display: grid;
 
     --logo-height: 7vh;
@@ -98,9 +97,9 @@ p b {
         grid-area: Banner;
         z-index: 100;
         display: grid;
-        grid-template-columns: calc(var(--logo-width) + 100px) auto 200px 150px 100px;
+        grid-template-columns: calc(var(--logo-width) + 100px) auto 150px 100px;
         grid-template-rows: 100%;
-        grid-template-areas: "Logo Empty Notifications Shop Login";
+        grid-template-areas: "Logo Empty Shop Login";
         align-items: center;
         justify-items: center;
     
@@ -801,6 +800,59 @@ p b {
 
             width: var(--width);
             height: var(--height);
+        }
+    }
+}
+
+#gallery_section {
+    grid-area: How_it_works;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+
+    & #gallery {
+        position: relative;
+        display: grid;
+        grid-template-rows: 700px 100px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+                "Main-image"
+                "Options";
+        justify-items: center;
+        height: 800px;
+        width: 800px;
+        border: solid red 1px;
+
+        & #mainImage {
+            grid-area: Main-image;
+            position: relative;
+            max-width: 500px;
+            max-height: 500px;
+            margin: 100px 0;
+        }
+
+        & #thumbnails {
+            grid-area: Options;
+            position: relative;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 100px;
+            column-gap: 50px;
+            overflow: auto;
+
+            & .thumb {
+                width: 100px;
+                height: 100px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
         }
     }
 }
