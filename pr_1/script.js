@@ -483,7 +483,7 @@ if (notification_list) {
 }
 
 
-
+// параллакс
 if (products.length) {
     window.addEventListener('scroll', () => {
         let scrollPosition = window.scrollY;
@@ -494,7 +494,7 @@ if (products.length) {
 
 
 
-
+// покидать ли
 var pr_contents = document.getElementById("contents");
 
 if (pr_contents) {
@@ -506,13 +506,29 @@ if (pr_contents) {
     });
 }
 
+
+// галлерея
 let mainImage = document.getElementById('mainImage');
 document.getElementById("thumbnails")?.addEventListener('click', (event) => {
     let closest = event.target.closest(".thumb");
     if (!closest) return;
-    
-    console.log(closest.style.backgroundImage.slice(5, -2));
+
+    mainImage.style.opacity = "0";
+
     mainImage.src = closest.style.backgroundImage.slice(5, -2);
+
+    let start = performance.now();
+    let duration = 500;
+
+    requestAnimationFrame(function gallery_opacity_animation(time) {
+        let timeFraction = (time - start) / duration;
+        if (timeFraction > 1) timeFraction = 1;
+
+        mainImage.style.opacity = String(timeFraction);
+
+        if (timeFraction < 1)
+            requestAnimationFrame(gallery_opacity_animation);
+    })
 });
 
 function rmv_clicks(){
@@ -683,7 +699,7 @@ if (up_button) {
             let timeFraction = (time - start) / duration;
             if (timeFraction > 1) timeFraction = 1;
     
-            let progress = timing(timeFraction);
+            let progress = up_button_timing(timeFraction);
             animate_scroll_up(progress, scroll_size);
     
             if (timeFraction < 1)
@@ -693,7 +709,7 @@ if (up_button) {
 }
 
 
-function timing(timeFraction) {
+function up_button_timing(timeFraction) {
     return timeFraction * timeFraction * (3.0 - 2.0 * timeFraction);
 }
 
