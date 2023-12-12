@@ -626,3 +626,78 @@ if (products.length) {
 
 
 }
+
+
+
+
+// Слайдер
+let slide_point = document.getElementsByClassName('slide_point')[0];
+let track = document.getElementsByClassName('track')[0];
+
+if (track) {
+    track.addEventListener('mousedown', function(e) {
+    
+        window.addEventListener('mousemove', mouseMove);
+        window.addEventListener('mouseup', mouseUp);
+      });
+}
+
+
+function mouseMove(e) {
+    console.log("listening");
+  let trackRect = track.getBoundingClientRect();
+  console.log(track.offsetWidth);
+  let newLeft = e.pageX - trackRect.left - slide_point.offsetWidth / 2;
+
+  if (newLeft < 0) {
+    newLeft = 0;
+  }
+
+  let rightEdge = track.offsetWidth;
+  if (newLeft > rightEdge) {
+    newLeft = rightEdge;
+  }
+
+  slide_point.style.left = newLeft + 'px';
+  console.log(newLeft);
+}
+
+function mouseUp() {
+  window.removeEventListener('mousemove', mouseMove);
+  window.removeEventListener('mouseup', mouseUp);
+}
+
+
+
+// Up button
+let up_button = document.getElementById("up_button");
+
+if (up_button) {
+    up_button.addEventListener('click', function(event) {
+        console.log("listening");
+        let start = performance.now();
+        let duration = 500;
+        let scroll_size = window.scrollY;
+    
+        requestAnimationFrame(function up_button_animation(time) {
+            let timeFraction = (time - start) / duration;
+            if (timeFraction > 1) timeFraction = 1;
+    
+            let progress = timing(timeFraction);
+            animate_scroll_up(progress, scroll_size);
+    
+            if (timeFraction < 1)
+            requestAnimationFrame(up_button_animation);
+        })
+    });
+}
+
+
+function timing(timeFraction) {
+    return timeFraction * timeFraction * (3.0 - 2.0 * timeFraction);
+}
+
+function animate_scroll_up(progress, scroll_size) {
+    window.scrollTo(0, scroll_size - (scroll_size * progress));
+}
+
